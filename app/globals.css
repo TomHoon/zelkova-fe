@@ -5,9 +5,61 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #fdfcf8;
+    --main: #82d3ac;
+    --hover: #8fdab6;
+    --active: #4c9f8b;
+    --success: #7ca9ed;
+    --warning: #ff8888;
+    --heart: #ff8888;
+    --title1: #333333;
+    --title2: #444444;
+    --text: #666666;
+    --subtext: #a6a6a6a6;
+    --line: #f6f6f6;
+    --footer: #f9f8f0;
+    --white: #ffffff;
   }
+}
+
+.background {
+  color: var(--background);
+}
+.foreground {
+  color: var(--foreground);
+}
+.main {
+  color: var(--main);
+}
+.hover {
+  color: var(--hover);
+}
+.active {
+  color: var(--active);
+}
+.warning {
+  color: var(--warning);
+}
+.heart {
+  color: var(--heart);
+}
+.title1 {
+  color: var(--title1);
+}
+.title2 {
+  color: var(--title2);
+}
+.text {
+  color: var(--text);
+}
+.subtext {
+  color: var(--subtext);
+}
+.line {
+  color: var(--line);
+}
+.footer {
+  color: var(--footer);
 }
 
 html,
