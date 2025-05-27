@@ -1,0 +1,115 @@
+.wrapper {
+  width: 1280px;
+  background: #fff;
+  position: relative;
+
+  &:hover .dropdown {
+    display: flex;
+  }
+}
+
+.navbar {
+  width: 1280px;
+  height: 64px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logo img {
+  width: 42px;
+  height: 42px;
+}
+
+.menu {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menuItem {
+  span {
+    display: inline-block;
+    padding: 16px 8px;
+    font-weight: 500;
+    color: #333;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #AFD4C6;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.login {
+  display: flex;
+  gap: 12px;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  padding: 32px 100px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 999;
+  flex-wrap: nowrap; /* 줄 바꿈 방지 */
+  justify-content: flex-start; /* 컬럼을 왼쪽부터 배치 */
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.dropdownColumn {
+  display: flex;
+  flex-direction: column; /* 세로 정렬 강제 */
+  align-items: flex-start;
+  min-width: 100px;
+  gap: 8px;
+}
+
+.dropdownItem {
+  font-size: 16px;
+  color: #666666;
+  cursor: pointer;
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  width: 100%; /* 각 항목이 컬럼 너비를 따름 */
+
+  &:hover  {
+    color: #AFD4C6;
+  }
+}
+
+.dropdownImage {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 80px;
+    height: 80px;
+    opacity: 0.15;
+  }
+}

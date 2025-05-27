@@ -3,28 +3,43 @@
   justify-content: center;
   align-items: center;
 }
+
 %radius-default {
   border-radius: 8px;
 }
 
-.small {
-  padding: 10px 24px;
+/* 버튼 사이즈 */
+.attach {
+  width: 120px;
+  height: 35px;
+}
+
+.nav {
   width: 84px;
-  height: 36px;
+  height: 45px;
 }
 
 .medium {
-  padding: 12px 46px;
-  width: 117px;
+  width: 120px;
   height: 40px;
 }
 
-.large {
-  padding: 15px 30px;
+.wide {
   width: 184px;
   height: 40px;
 }
 
+.large {
+  width: 260px;
+  height: 40px;
+}
+
+.xlarge {
+  width: 372px;
+  height: 40px;
+}
+
+/* 컬러 타입 */
 .A {
   @extend %radius-default;
   @extend %align-default;
@@ -43,4 +58,14 @@
   }
   background: var(--main);
   border: none;
+}
+
+.C {
+  @extend %radius-default;
+  @extend %align-default;
+  & span {
+    color: var(--main);
+  }
+  background: var(--white);
+  border: 1px solid var(--main);
 }

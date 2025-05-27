@@ -3,40 +3,36 @@
 import C_ButtonStyles from "@/styles/C_Button.module.scss";
 
 const SizeMap = {
-  small: C_ButtonStyles.small,
+  attach: C_ButtonStyles.attach,
+  nav: C_ButtonStyles.nav,
   medium: C_ButtonStyles.medium,
+  wide: C_ButtonStyles.wide,
   large: C_ButtonStyles.large,
+  xlarge: C_ButtonStyles.xlarge,
 };
 
 const ColorTypeMap = {
   A: C_ButtonStyles.A,
   B: C_ButtonStyles.B,
+  C: C_ButtonStyles.C,
 };
 
 /**
- *
  * [공통버튼 - Args]
  *
- * - 크기: small, medium(기본값), large
- *
- * - 컬러: A(기본값), B
- *  * - A: 글자색 black + 배경색 white + 테두리 green
- *  * - B: 글자색 white + 배경색 green + 테두리 none
- *
- * - 글자: 텍스트 (기본값: 버튼)
- *
- *  */
-
-export default function C_Button_L({
+ * - 크기: attach, nav, medium, wide, large, xlarge
+ * - 컬러: A (white 배경 + green 테두리), B (green 배경 + white 텍스트), C (white 배경 + green 테두리 + green 텍스트)
+ * - 글자: title (기본값 "버튼")
+ * 
+ */
+export default function C_Button({
   size = "medium",
   type = "A",
   title = "버튼",
 }) {
   return (
-    <>
-      <button className={`${SizeMap[size]} ${ColorTypeMap[type]}`}>
-        <span>{title}</span>
-      </button>
-    </>
+    <button className={`${SizeMap[size]} ${ColorTypeMap[type]}`}>
+      <span>{title}</span>
+    </button>
   );
 }
