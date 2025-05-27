@@ -20,11 +20,13 @@ export default function App() {
   return (
     <div className={C_DesignStyles.designContainer}>
 
-      <C_Button title="small button" size="small" />
-      <C_Button title="medium button" size="medium" />
-      <C_Button title="large button" size="large" />
-      <C_Button title="large A button" size="large" type="A" />
-      <C_Button title="large B button" size="large" type="B" />
+      <C_Button title="파일 첨부" size="attach" type="B" />
+      <C_Button title="로그인" size="nav" />
+      <C_Button title="회원가입" size="nav" type="B" />
+      <C_Button title="검색" size="medium" type="C"/>
+      <C_Button title="글 수정" size="wide" />
+      <C_Button title="로그인" size="large" />
+      <C_Button title="가입 완료" size="xlarge" />
 
       <C_TabBar elementList={["시설안내", "조직도"]} callback={cb} />
 
