@@ -12,10 +12,10 @@ export default function App() {
     console.log("callback 실행");
   };
 
-  const [errorInput, setErrorInput] = useState("");
-  const [focusedInput, setFocusedInput] = useState("");
-  const [dateInput, setDateInput] = useState("");
-  const [smallInput, setSmallInput] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [age, setAge] = useState("");
+  const [email2, setEmail2] = useState("");
 
   return (
     <div className={C_DesignStyles.designContainer}>
@@ -29,32 +29,41 @@ export default function App() {
       <C_TabBar elementList={["시설안내", "조직도"]} callback={cb} />
 
       <C_Input
-        value={errorInput}
-        onChange={(e) => setErrorInput(e.target.value)}
-        placeholder="에러"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="이메일"
+        type="email"
+      />
+
+      <C_Input
+        value={email2}
+        onChange={(e) => setEmail2(e.target.value)}
+        placeholder="이메일2"
+        placeholderSize="sm"
+        placeholderColor="B"
         state="error"
+        type="email"
+        width="400px"
       />
 
       <C_Input
-        value={dateInput}
-        onChange={(e) => setDateInput(e.target.value)}
-        width="200px"
-        placeholder="날짜"          
-        isDate={true}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="비밀번호"
+        placeholderColor="B"
+        state="error"
+        type="password"
       />
 
       <C_Input
-        value={focusedInput}
-        onChange={(e) => setFocusedInput(e.target.value)}
-        placeholder="클릭 시"
+        value={age}
+        onChange={(e) => setAge(e.target.value)}
+        placeholder="나이"
+        placeholderSize="sm"
+        placeholderColor="B"
         state="focused"
-      />
-
-      <C_Input
-        value={smallInput}
-        onChange={(e) => setSmallInput(e.target.value)}
-        placeholder="작은 placeholder"
-        size="sm"
+        type="number"
+        width="100px"
       />
     </div>
   );
