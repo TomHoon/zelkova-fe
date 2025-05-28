@@ -6,6 +6,7 @@ import C_TabBar from "@/common/mocules/C_TabBar";
 import C_NavBar from "@/common/mocules/C_NavBar";
 import C_SocialButton from "@/common/atom/C_SocialButton";
 import C_Input from "@/common/atom/C_Input";
+import C_PostDetailView from "@/common/organisms/C_PostDetailView";
 import C_WriteForm from "@/common/organism/C_WriteForm";
 import C_Modal from "@/common/mocules/C_Modal";
 import C_SectionContainer from "@/common/mocules/C_SectionContainer";
@@ -13,7 +14,6 @@ import C_PhoneVerification from "@/common/mocules/C_PhoneVerification";
 import C_Pagination from "@/common/mocules/C_Pagination";
 import C_DesignStyles from "@/styles/C_Design.module.scss";
 import C_Footer from "@/common/organisms/C_Footer";
-
 import C_TableList from "@/common/mocules/C_TableList";
 
 export default function App() {
@@ -25,11 +25,16 @@ export default function App() {
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
   const [email2, setEmail2] = useState("");
-
+ 
   const [errorInput, setErrorInput] = useState("");
   const [focusedInput, setFocusedInput] = useState("");
   const [dateInput, setDateInput] = useState("");
   const [smallInput, setSmallInput] = useState("");
+  
+  const dummyPostList = [
+    { id: 10, title: "이전글 제목입니다", createdAt: "2000.00.00" },
+    { id: 8, title: "다음글 제목입니다", createdAt: "2000.00.00" },
+  ];
 
   const columns = [
     { label: "No", key: "no", width: "10%" },
@@ -117,6 +122,16 @@ export default function App() {
           type="number"
           width="100px"
         />
+            
+        <C_PostDetailView
+        title="공지사항 제목"
+        content="공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다."
+        createdAt="2024.01.01"
+        author="운영자"
+        postList={dummyPostList}
+        >
+        <p>댓글</p>
+      </C_PostDetailView>
 
         <h2>버튼 크기</h2>
         <C_Button title="small button" size="small" />
