@@ -7,6 +7,7 @@ import C_NavBar from "@/common/mocules/C_NavBar";
 import C_SocialButton from "@/common/atom/C_SocialButton";
 import C_Input from "@/common/atom/C_Input";
 import C_Puter from "@/common/organisms/C_Footer";
+import C_PostDetailView from "@/common/organisms/C_PostDetailView";
 
 import C_DesignStyles from "@/styles/C_Desgin.module.scss";
 
@@ -20,6 +21,11 @@ export default function App() {
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
   const [email2, setEmail2] = useState("");
+
+  const dummyPostList = [
+    { id: 10, title: "이전글 제목입니다", createdAt: "2000.00.00" },
+    { id: 8, title: "다음글 제목입니다", createdAt: "2000.00.00" },
+  ];
 
   return (
     <div className={C_DesignStyles.designContainer}>
@@ -92,6 +98,16 @@ export default function App() {
       />
 
       <C_Puter/>
+
+      <C_PostDetailView
+        title="공지사항 제목"
+        content="공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다."
+        createdAt="2024.01.01"
+        author="운영자"
+        postList={dummyPostList}
+      >
+        <p>댓글</p>
+      </C_PostDetailView>
     </div>
 
     

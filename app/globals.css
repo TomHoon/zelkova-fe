@@ -3,7 +3,7 @@
   --foreground: #171717;
   --main: #82d3ac;
   --hover: #8fdab6;
-  --active: #4c9f8b;
+  --active: #5A8F7B;
   --success: #7ca9ed;
   --warning: #ff8888;
   --heart: #ff8888;
@@ -14,7 +14,6 @@
   --line: #f6f6f6;
   --footer: #f9f8f0;
   --white: #ffffff;
-  --footer-bg: #5A8F7B;
 }
 
 .background {
