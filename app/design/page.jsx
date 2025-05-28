@@ -6,12 +6,16 @@ import C_TabBar from "@/common/mocules/C_TabBar";
 import C_NavBar from "@/common/mocules/C_NavBar";
 import C_SocialButton from "@/common/atom/C_SocialButton";
 import C_Input from "@/common/atom/C_Input";
-import C_Puter from "@/common/organisms/C_Footer";
 import C_Modal from "@/common/mocules/C_Modal";
 import C_SectionContainer from "@/common/mocules/C_SectionContainer";
 import C_PhoneVerification from "@/common/mocules/C_PhoneVerification";
 import C_Pagination from "@/common/mocules/C_Pagination";
 import C_DesignStyles from "@/styles/C_Design.module.scss";
+import C_Footer from "@/common/organisms/C_Footer";
+
+import C_TableList from "@/common/mocules/C_TableList";
+
+import C_DesignStyles from "@/styles/C_Desgin.module.scss";
 
 
 export default function App() {
@@ -28,6 +32,20 @@ const [errorInput, setErrorInput] = useState("");
 const [focusedInput, setFocusedInput] = useState("");
 const [dateInput, setDateInput] = useState("");
 const [smallInput, setSmallInput] = useState("");
+  
+const columns = [
+  { label: "No", key: "no", width: "10%" },
+  { label: "Title", key: "title", width: "70%" },
+  { label: "Date", key: "date", width: "20%" },
+];
+
+const data = Array.from({ length: 10 }, (_, i) => ({
+  no: 10,
+  title: "Lorem ipsum dolor sit amet consectetur.",
+  date: "2000.00.00",
+}));
+
+
 
 return (
   <div className={C_DesignStyles.designContainer}>
@@ -98,8 +116,6 @@ return (
     type="number"
     width="100px"
   />
-
-  <C_Puter/>
 
   <h2>버튼 크기</h2>
   <C_Button title="small button" size="small" />
@@ -172,6 +188,18 @@ return (
         placeholder="작은 placeholder"
         size="sm"
       />
+          
+      <C_Footer/>
+
+    <C_TableList
+        title="공지사항"
+        columns={columns}
+        data={data}
+        searchable={true}
+        onSearch={(keyword) => console.log(keyword)}
+      />
+
+    </div>
 
       <h2>휴대폰 인증</h2>
       <div className={C_DesignStyles.section}>
