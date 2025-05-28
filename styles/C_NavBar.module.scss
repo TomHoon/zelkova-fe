@@ -73,12 +73,13 @@
   background: #fff;
   border-top: 1px solid #e0e0e0;
   padding: 32px 100px;
+  padding-left: 370px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   z-index: 999;
   flex-wrap: nowrap; /* 줄 바꿈 방지 */
   justify-content: flex-start; /* 컬럼을 왼쪽부터 배치 */
   align-items: flex-start;
-  gap: 60px;
+  gap: 6px;
 }
 
 .dropdownColumn {
