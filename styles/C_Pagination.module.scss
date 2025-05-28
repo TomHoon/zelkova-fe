@@ -1,0 +1,137 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 30px 0;
+}
+
+.navGroup {
+  display: flex;
+  gap: 0px;
+}
+
+.pageGroup {
+  display: flex;
+  gap: 0px;
+}
+
+.navGroup .pageButton {
+  border-radius: 0; /* 기본적으로 모서리를 직각으로 */
+  margin: 0;
+}
+
+/* 왼쪽 네비게이션의 첫 번째 버튼 */
+.navGroup .pageButton:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+/* 왼쪽 네비게이션의 마지막 버튼 */
+.navGroup .pageButton:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* 네비게이션 그룹 내 버튼들 테두리 처리 */
+.navGroup .pageButton:not(:first-child) {
+  margin-left: -2px; /* 테두리 겹침 처리 */
+}
+
+/* 페이지 번호 그룹도 동일한 스타일 적용 */
+.pageGroup {
+  display: flex;
+  gap: 0;
+}
+
+.pageGroup .pageButton {
+  border-radius: 0;
+  margin: 0;
+}
+
+.pageGroup .pageButton:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.pageGroup .pageButton:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.pageGroup .pageButton:not(:first-child) {
+  margin-left: -2px;
+}
+
+.pageButton {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--main);
+  background: var(--white);
+  color: var(--text);
+
+  margin: 0px;
+  border-radius: 0px;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 8px;
+  transition: 0.2s;
+  
+  // 호버 상태 - 마우스가 올라갔을 때
+  &:hover:not(:disabled):not(.active) {
+    background: var(--hover);
+    color: var(--white);
+    border-color: var(--hover);
+  }
+  
+  // 클릭 상태 - 마우스로 버튼을 누르고 있을 때
+  &:active:not(:disabled):not(.active) {
+    background: var(--active);
+    color: var(--white);
+    border-color: var(--active);
+  }
+  
+  // 비활성화 상태
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  // 현재 선택된 페이지 (React에서 current === page일 때)
+  &.active {
+    background: var(--main);
+    color: var(--white);
+    border-color: var(--main);
+    
+    // 현재 페이지에서 마우스 클릭 상태
+    &:active {
+      background: var(--active);
+      border-color: var(--active);
+    }
+    
+    // 현재 페이지에서 호버 상태
+    &:hover {
+      background: var(--hover);
+      border-color: var(--hover);
+    }
+  }
+}
+
+/* 첫 번째 버튼에만 왼쪽 모서리 둥글게 */
+.pageGroup .pageButton:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+/* 마지막 버튼에만 오른쪽 모서리 둥글게 */
+.pageGroup .pageButton:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* 붙어있는 버튼들의 테두리 겹침 처리 */
+.pageGroup .pageButton:not(:first-child) {
+  margin-left: -2px; /* 테두리 두께만큼 왼쪽으로 당겨서 테두리가 겹치게 */
+}
