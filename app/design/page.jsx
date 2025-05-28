@@ -5,6 +5,7 @@ import C_Button from "@/common/atom/C_Button";
 import C_Input from "@/common/atom/C_Input";
 import C_TabBar from "@/common/mocules/C_TabBar";
 import C_Modal from "@/common/mocules/C_Modal";
+import C_SectionContainer from "@/common/mocules/C_SectionContainer";
 import C_PhoneVerification from "@/common/mocules/C_PhoneVerification";
 import C_Pagination from "@/common/mocules/C_Pagination";
 import C_DesignStyles from "@/styles/C_Design.module.scss";
@@ -108,6 +109,20 @@ export default function App() {
           displayPageCount={10}
           // onPageChange={handlePageChange} 
         />
+
+        <h2>섹션 컨테이너</h2>
+        <C_SectionContainer title="공지사항">
+          <div className={C_DesignStyles.demoContent}>
+            <p>섹션 내용이 들어가는 영역입니다.</p>
+          </div>
+        </C_SectionContainer>
+
+        <C_SectionContainer title="시설 안내">
+          <div className={C_DesignStyles.demoContent}>
+            <p>시설 안내 내용입니다.</p>
+          </div>
+        </C_SectionContainer>
+
       </div>
     </div>
   );
