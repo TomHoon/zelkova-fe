@@ -27,7 +27,7 @@ const ColorTypeMap = {
  *
  *  */
 
-export default function C_Button_L({
+export default function C_Button({
   size = "medium",
   type = "A",
   title = "버튼",

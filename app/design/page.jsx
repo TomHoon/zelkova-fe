@@ -1,14 +1,23 @@
 "use client";
 
+import { useState } from "react";
 import C_Button from "@/common/atom/C_Button";
+import C_Input from "@/common/atom/C_Input";
 import C_TabBar from "@/common/mocules/C_TabBar";
 import C_Modal from "@/common/mocules/C_Modal";
-import C_DesignStyles from "@/styles/C_Desgin.module.scss";
+import C_PhoneVerification from "@/common/mocules/C_PhoneVerification";
+import C_DesignStyles from "@/styles/C_Design.module.scss";
 
 export default function App() {
   const cb = () => {
     console.log("callback 실행");
   };
+
+  const [errorInput, setErrorInput] = useState("");
+  const [focusedInput, setFocusedInput] = useState("");
+  const [dateInput, setDateInput] = useState("");
+  const [smallInput, setSmallInput] = useState("");
+
 
   return (
     <div className={C_DesignStyles.designContainer}>
@@ -31,33 +40,62 @@ export default function App() {
           <div className={C_DesignStyles.modalItem}>
 
             <h3>타입 A 모달</h3>
-            <C_Modal
-              type="A"
-              title="제목"
-              content="모달 기본형태 입니다."
+            <C_Modal type="A" title="제목" content="모달 기본형태 입니다."
               confirmText="확인"
               //onConfirm={modalConfirm} // 확인 동작
               isStatic={true} // UI용 prop 실제 사용할때는 뺄 것
             />
 
             <h3>타입 B 모달</h3>
-            <C_Modal
-              type="B"
-              title="제목"
+            <C_Modal type="B" title="제목"
               content={`네 모달창입니다.
 [b]1~3줄만 쓰는 걸 추천합니다.[/b]
 그게 이쁘거든요
 스크롤로 해두긴 했지만?
 ㅎ..
 `}
-              confirmText="등록"
-              cancelText="취소"
+              confirmText="등록" cancelText="취소"
               //onConfirm={modalConfirm} // 등록 동작
               //onCancel={modalCancel} // 취소 동작
               isStatic={true} // UI용 prop 실제 사용할때는 뺄 것
             />
 
           </div>
+        </div>
+
+        <h2>입력 필드</h2>
+        <C_Input
+        value={errorInput}
+        onChange={(e) => setErrorInput(e.target.value)}
+        placeholder="에러"
+        state="error"
+      />
+
+      <C_Input
+        value={dateInput}
+        onChange={(e) => setDateInput(e.target.value)}
+        width="200px"
+        placeholder="날짜"          
+        isDate={true}
+      />
+
+      <C_Input
+        value={focusedInput}
+        onChange={(e) => setFocusedInput(e.target.value)}
+        placeholder="클릭 시"
+        state="focused"
+      />
+
+      <C_Input
+        value={smallInput}
+        onChange={(e) => setSmallInput(e.target.value)}
+        placeholder="작은 placeholder"
+        size="sm"
+      />
+
+        <h2>휴대폰 인증</h2>
+        <div className={C_DesignStyles.section}>
+          <C_PhoneVerification />
         </div>
       </div>
   );
