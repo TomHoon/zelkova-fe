@@ -204,34 +204,34 @@ export default function App() {
           searchable={true}
           onSearch={(keyword) => console.log(keyword)}
         />
-      </div>
 
-      <h2>휴대폰 인증</h2>
-      <div className={C_DesignStyles.section}>
-        <C_PhoneVerification />
-      </div>
+        <h2>휴대폰 인증</h2>
+        <div className={C_DesignStyles.section}>
+          <C_PhoneVerification />
+        </div>
 
-      <h2>페이지네이션</h2>
-      <div className={C_DesignStyles.section}>
-        <C_Pagination
-          // currentPage={currentPage}
-          totalPages={10}
-          displayPageCount={10}
-          // onPageChange={handlePageChange}
-        />
+        <h2>페이지네이션</h2>
+        <div className={C_DesignStyles.section}>
+          <C_Pagination
+            // currentPage={currentPage}
+            totalPages={10}
+            displayPageCount={10}
+            // onPageChange={handlePageChange}
+          />
 
-        <h2>섹션 컨테이너</h2>
-        <C_SectionContainer title="공지사항">
-          <div className={C_DesignStyles.demoContent}>
-            <p>섹션 내용이 들어가는 영역입니다.</p>
-          </div>
-        </C_SectionContainer>
+          <h2>섹션 컨테이너</h2>
+          <C_SectionContainer title="공지사항">
+            <div className={C_DesignStyles.demoContent}>
+              <p>섹션 내용이 들어가는 영역입니다.</p>
+            </div>
+          </C_SectionContainer>
 
-        <C_SectionContainer title="시설 안내">
-          <div className={C_DesignStyles.demoContent}>
-            <p>시설 안내 내용입니다.</p>
-          </div>
-        </C_SectionContainer>
+          <C_SectionContainer title="시설 안내">
+            <div className={C_DesignStyles.demoContent}>
+              <p>시설 안내 내용입니다.</p>
+            </div>
+          </C_SectionContainer>
+        </div>
       </div>
     </>
   );
