@@ -6,10 +6,9 @@ import C_TabBar from "@/common/mocules/C_TabBar";
 import C_NavBar from "@/common/mocules/C_NavBar";
 import C_SocialButton from "@/common/atom/C_SocialButton";
 import C_Input from "@/common/atom/C_Input";
+import C_Footer from "@/common/organisms/C_Footer";
 
 import C_TableList from "@/common/mocules/C_TableList";
-
-import C_Puter from "@/common/organisms/C_Footer";
 
 
 import C_DesignStyles from "@/styles/C_Desgin.module.scss";
@@ -108,6 +107,7 @@ export default function App() {
         width="100px"
       />
 
+      <C_Footer/>
 
     <C_TableList
         title="공지사항"
@@ -116,8 +116,6 @@ export default function App() {
         searchable={true}
         onSearch={(keyword) => console.log(keyword)}
       />
-
-      <C_Puter/>
 
     </div>
 
