@@ -29,9 +29,9 @@
   &::before,
   &::after {
     content: "";
-    width: 72px;                // ✅ 고정 길이
+    width: 72px;               
     height: 1px;
-    background-color: #F2F2F2;  // ✅ 선 색상
+    background-color: #F2F2F2; 
   }
 }
 
