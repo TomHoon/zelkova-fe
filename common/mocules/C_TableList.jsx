@@ -24,62 +24,79 @@ import C_Input from "@/common/atom/C_Input";
  * />
  */
 export default function TableList({
-  title,         // 테이블 상단 제목
-  columns,       // 테이블 컬럼 구성 (label, key, width)
-  data,          // 테이블 본문 데이터 (key값 기준 렌더링)
-  searchable = false, // 검색바 출력 여부
-  onSearch       // 검색 실행 함수
-}) {
-  const [keyword, setKeyword] = useState("");
-
-  const handleSearch = () => {
-    if (onSearch) onSearch(keyword);
-  };
-
-  return (
-    <div className={C_TableList.wrapper}>
-      {title && <h2 className={C_TableList.title}>{title}</h2>}
-
-      {searchable && (
-        <div className={C_TableList.searchbar}>
-          <select className={C_TableList.select}>
-            <option value="title">제목</option>
-          </select>
-          <C_Input
-                  value={keyword}
-                  onChange={(e) => setKeyword(e.target.value)}
-                  placeholder="검색어를 입력해주세요"
-                  placeholderSize="sm"
-                  placeholderColor="A"
-                  state="error"
-                  type="email"
-                  width="718px"
-                />
-          <C_Button title="검색" size="medium" type="C"/>
-        </div>
-      )}
-
-
-      <table className={C_TableList.table}>
-        <thead>
-          <tr>
-            {columns.map((col) => (
-              <th key={col.key} style={{ width: col.width }}>
-                {col.label}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((row, i) => (
-            <tr key={i}>
+    title,
+    columns,
+    data,
+    searchable = false,
+    onSearch
+  }) {
+    const [keyword, setKeyword] = useState("");
+    const [selected, setSelected] = useState("제목");
+    const [isOpen, setIsOpen] = useState(false);
+  
+    const handleSearch = () => {
+      if (onSearch) onSearch(keyword);
+    };
+  
+    const handleSelect = (label) => {
+      setSelected(label);
+      setIsOpen(false);
+    };
+  
+    return (
+      <div className={C_TableList.wrapper}>
+        {title && <h2 className={C_TableList.title}>{title}</h2>}
+  
+        {searchable && (
+          <div className={C_TableList.searchbar}>
+            {/* 커스텀 셀렉트 */}
+            <div className={C_TableList.selectWrapper}>
+              <div className={C_TableList.selected} onClick={() => setIsOpen(!isOpen)}>
+                {selected} ▼
+              </div>
+              {isOpen && (
+                <ul className={C_TableList.optionList}>
+                  {["제목", "작성자"].map((label) => (
+                    <li key={label} onClick={() => handleSelect(label)}>
+                      {label}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+  
+            <C_Input
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+              placeholder="검색어를 입력해주세요"
+              placeholderSize="sm"
+              placeholderColor="A"
+              state="error"
+              type="email"
+              width="718px"
+            />
+            <C_Button title="검색" size="medium" type="C" />
+          </div>
+        )}
+  
+        <table className={C_TableList.table}>
+          <thead>
+            <tr>
               {columns.map((col) => (
-                <td key={col.key}>{row[col.key]}</td>
+                <th key={col.key} style={{ width: col.width }}>{col.label}</th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
+          </thead>
+          <tbody>
+            {data.map((row, i) => (
+              <tr key={i}>
+                {columns.map((col) => (
+                  <td key={col.key}>{row[col.key]}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }

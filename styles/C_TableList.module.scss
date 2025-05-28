@@ -39,8 +39,63 @@
     input {
       width: 260px;
     }
+   
   
   }
+  /* === 셀렉트 박스 커스텀 === */
+.selectWrapper {
+  position: relative;
+  width: 120px;
+  user-select: none;
+  font-size: 14px;
+}
+
+.selected {
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: #4EBBA0;
+    background-color: #F2FBF9;
+  }
+}
+
+.optionList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 4px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  background-color: #fff;
+  list-style: none;
+  padding: 0;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  li {
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: #4EBBA0;
+      color: #fff;
+    }
+  }
+}
+
   
   .table {
     width: 1080px;
@@ -79,4 +134,5 @@
       }
     }
   }
+  
   

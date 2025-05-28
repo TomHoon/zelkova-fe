@@ -25,7 +25,7 @@ export default function App() {
     { label: "Date", key: "date", width: "20%" },
   ];
 
-  const data = Array.from({ length: 20 }, (_, i) => ({
+  const data = Array.from({ length: 10 }, (_, i) => ({
     no: 10,
     title: "Lorem ipsum dolor sit amet consectetur.",
     date: "2000.00.00",
