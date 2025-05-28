@@ -6,6 +6,7 @@ import C_TabBar from "@/common/mocules/C_TabBar";
 import C_NavBar from "@/common/mocules/C_NavBar";
 import C_SocialButton from "@/common/atom/C_SocialButton";
 import C_Input from "@/common/atom/C_Input";
+import C_WriteForm from "@/common/organism/C_WriteForm";
 import C_Modal from "@/common/mocules/C_Modal";
 import C_SectionContainer from "@/common/mocules/C_SectionContainer";
 import C_PhoneVerification from "@/common/mocules/C_PhoneVerification";
@@ -188,6 +189,7 @@ return (
         placeholder="작은 placeholder"
         size="sm"
       />
+      <C_WriteForm />
           
       <C_Footer/>
 
