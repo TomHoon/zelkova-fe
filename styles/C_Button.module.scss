@@ -1,0 +1,46 @@
+%align-default {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+%radius-default {
+  border-radius: 8px;
+}
+
+.small {
+  padding: 10px 24px;
+  width: 84px;
+  height: 36px;
+}
+
+.medium {
+  padding: 12px 46px;
+  width: 117px;
+  height: 40px;
+}
+
+.large {
+  padding: 15px 30px;
+  width: 184px;
+  height: 40px;
+}
+
+.A {
+  @extend %radius-default;
+  @extend %align-default;
+  & span {
+    color: var(--text);
+  }
+  background: var(--white);
+  border: 1px solid var(--main);
+}
+
+.B {
+  @extend %align-default;
+  @extend %radius-default;
+  & span {
+    color: var(--white);
+  }
+  background: var(--main);
+  border: none;
+}
