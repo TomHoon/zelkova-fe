@@ -3,10 +3,12 @@
 import { useState } from "react";
 import C_Button from "@/common/atom/C_Button";
 import C_TabBar from "@/common/mocules/C_TabBar";
+import C_NavBar from "@/common/mocules/C_NavBar";
 import C_SocialButton from "@/common/atom/C_SocialButton";
 import C_Input from "@/common/atom/C_Input";
 
 import C_DesignStyles from "@/styles/C_Desgin.module.scss";
+
 
 export default function App() {
   const cb = () => {
@@ -29,7 +31,21 @@ export default function App() {
       <C_Button title="로그인" size="large" />
       <C_Button title="가입 완료" size="xlarge" />
 
+
+
+      <C_Button title="로그인" size="nav" />
+      <C_Button title="회원가입" size="nav" type="B" />
+
       <C_TabBar elementList={["시설안내", "조직도"]} callback={cb} />
+
+      <C_NavBar elementList={[ 
+        {label: "기관소개", submenu: ["이용안내","시설안내", "오시는길", "조직도"]},
+        {label: "공지사항", submenu: ["공지사항","가정통신문", "채용안내"]},
+        {label: "후원&자원봉사", submenu: ["후원의손길", "자원봉사"]},
+        {label: "커뮤니티",}
+        
+        ,]} callback={cb} />
+
         
       <C_SocialButton 
         onClickKakao={() => console.log("카카오 로그인")}
