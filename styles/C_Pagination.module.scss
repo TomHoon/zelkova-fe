@@ -1,0 +1,71 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 30px 0;
+}
+
+.navGroup {
+  display: flex;
+  gap: 4px;
+}
+
+.pageGroup {
+  display: flex;
+  gap: 4px;
+}
+
+.pageButton {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--text);
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 0 8px;
+  transition: 0.2s;
+  
+  // 호버 상태 - 마우스가 올라갔을 때
+  &:hover:not(:disabled):not(.active) {
+    background: var(--hover);
+    color: var(--white);
+    border-color: var(--hover);
+  }
+  
+  // 클릭 상태 - 마우스로 버튼을 누르고 있을 때
+  &:active:not(:disabled):not(.active) {
+    background: var(--active);
+    color: var(--white);
+    border-color: var(--active);
+  }
+  
+  // 비활성화 상태
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  // 현재 선택된 페이지 (React에서 current === page일 때)
+  &.active {
+    background: var(--main);
+    color: var(--white);
+    border-color: var(--main);
+    
+    // 현재 페이지에서 마우스 클릭 상태
+    &:active {
+      background: var(--active);
+      border-color: var(--active);
+    }
+    
+    // 현재 페이지에서 호버 상태
+    &:hover {
+      background: var(--hover);
+      border-color: var(--hover);
+    }
+  }
+}

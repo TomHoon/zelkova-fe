@@ -6,6 +6,7 @@ import C_Input from "@/common/atom/C_Input";
 import C_TabBar from "@/common/mocules/C_TabBar";
 import C_Modal from "@/common/mocules/C_Modal";
 import C_PhoneVerification from "@/common/mocules/C_PhoneVerification";
+import C_Pagination from "@/common/mocules/C_Pagination";
 import C_DesignStyles from "@/styles/C_Design.module.scss";
 
 export default function App() {
@@ -97,6 +98,17 @@ export default function App() {
         <div className={C_DesignStyles.section}>
           <C_PhoneVerification />
         </div>
+      
+
+        <h2>페이지네이션</h2>
+        <div className={C_DesignStyles.section}>
+        <C_Pagination 
+          // currentPage={currentPage}
+          totalPages={10} 
+          displayPageCount={10}
+          // onPageChange={handlePageChange} 
+        />
       </div>
+    </div>
   );
 }
