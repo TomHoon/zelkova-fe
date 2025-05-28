@@ -5,6 +5,7 @@ import C_Button from "@/common/atom/C_Button";
 import C_TabBar from "@/common/mocules/C_TabBar";
 import C_SocialButton from "@/common/atom/C_SocialButton";
 import C_Input from "@/common/atom/C_Input";
+import C_TableList from "@/common/mocules/C_TableList";
 
 import C_DesignStyles from "@/styles/C_Desgin.module.scss";
 
@@ -17,6 +18,19 @@ export default function App() {
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
   const [email2, setEmail2] = useState("");
+
+  const columns = [
+    { label: "No", key: "no", width: "10%" },
+    { label: "Title", key: "title", width: "70%" },
+    { label: "Date", key: "date", width: "20%" },
+  ];
+
+  const data = Array.from({ length: 20 }, (_, i) => ({
+    no: 10,
+    title: "Lorem ipsum dolor sit amet consectetur.",
+    date: "2000.00.00",
+  }));
+
 
   return (
     <div className={C_DesignStyles.designContainer}>
@@ -72,6 +86,14 @@ export default function App() {
         state="focused"
         type="number"
         width="100px"
+      />
+
+    <C_TableList
+        title="공지사항"
+        columns={columns}
+        data={data}
+        searchable={true}
+        onSearch={(keyword) => console.log(keyword)}
       />
     </div>
   );
