@@ -5,6 +5,7 @@ import C_Button from "@/common/atom/C_Button";
 import C_TabBar from "@/common/mocules/C_TabBar";
 import C_SocialButton from "@/common/atom/C_SocialButton";
 import C_Input from "@/common/atom/C_Input";
+import C_WriteForm from "@/common/organism/C_WriteForm";
 
 import C_DesignStyles from "@/styles/C_Desgin.module.scss";
 
@@ -73,6 +74,8 @@ export default function App() {
         type="number"
         width="100px"
       />
+
+      <C_WriteForm />
     </div>
   );
 }
