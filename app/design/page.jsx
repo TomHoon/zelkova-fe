@@ -3,6 +3,7 @@
 import { useState } from "react";
 import C_Button from "@/common/atom/C_Button";
 import C_TabBar from "@/common/mocules/C_TabBar";
+import C_SocialButton from "@/common/atom/C_SocialButton";
 import C_Input from "@/common/atom/C_Input";
 
 import C_DesignStyles from "@/styles/C_Desgin.module.scss";
@@ -29,6 +30,11 @@ export default function App() {
       <C_Button title="가입 완료" size="xlarge" />
 
       <C_TabBar elementList={["시설안내", "조직도"]} callback={cb} />
+        
+      <C_SocialButton 
+        onClickKakao={() => console.log("카카오 로그인")}
+        onClickGoogle={() => console.log("구글 로그인")}
+      />
 
       <C_Input
         value={email}
