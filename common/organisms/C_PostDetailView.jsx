@@ -26,7 +26,9 @@ export default function C_PostDetailView({ title, content, createdAt, author, ch
 
         {/* 댓글 영역 */}
         <div className={styles.commentArea}>
-            {children}
+            <div className={styles.innerCommnetArea}>
+                {children}
+            </div>
         </div>
 
         {/* 하단 버튼 */}
