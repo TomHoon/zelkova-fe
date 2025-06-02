@@ -106,7 +106,21 @@ export default function TestPage() {
 			</C_SectionContainer>
 
 			<C_SectionContainer title="입소구비서류">
-				<p>ㅇㅇ</p>
+				<div className={styles.processWrapper}>
+                    {[
+                        { icon: "check.svg", text: "이용신청서 (시설)" },
+                        { icon: "check.svg", text: "주민등록등본 1통, 장애인등록증 또는 카드 사본 1통" },
+                        { icon: "check.svg", text: "기초생활수급권증명서(해당자) 사본 1통" },
+                    ].map((item, idx) => (
+                        <div
+                            key={idx}
+                            className={`${styles.processRow} ${idx % 2 === 0 ? styles.altBg : ""}`}
+                        >
+                            <img src={`/images/${item.icon}`} alt={item.text} className={styles.icon} />
+                            <span className={styles.label}>{item.text}</span>
+                        </div>
+                    ))}
+                </div>
 			</C_SectionContainer>
 		</C_PageTemplate>
 	);
