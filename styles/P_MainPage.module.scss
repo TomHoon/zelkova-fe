@@ -1,0 +1,108 @@
+.sliderWrapper {
+	position: relative;
+    width: 1280px;
+	height: 720px;
+	overflow: hidden;
+}
+
+.slide {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-size: cover;
+	background-position: center;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}
+
+.slide.active {
+	opacity: 1;
+	z-index: 1;
+}
+
+.textWrap {
+	position: absolute;
+	bottom: 110px;
+	left: 60px;
+	width: 470px;
+	height: 44px;
+	color: var(--white);
+	display: flex;
+	flex-direction: column;
+	justify-content: center; 
+	align-items: center;
+
+	h2 {
+		font-size: 46px;
+		font-weight: 700;
+		margin: 0;
+		text-align: center;
+		line-height: 1;
+	}
+
+	p {
+		font-size: 14px;
+		font-weight: 500;
+		margin-top: 20px;
+		text-align: center;
+	}
+}
+
+.dots {
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 10px;
+	z-index: 10;
+}
+
+.dot {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background-color: var(--white);
+	opacity: 0.6;
+	cursor: pointer;
+	transition: all 0.3s ease;
+
+	&.activeDot {
+		width: 32px;
+		height: 12px;
+		border-radius: 999px;
+		background-color: var(--active);
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.arrows {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 15;
+	background: transparent;
+
+	button {
+        width: 100px;
+        height: 100%;
+		background-color: transparent;
+		border: none;
+		font-size: 48px;
+		cursor: pointer;
+		transition: transform 0.2s;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+}
+
