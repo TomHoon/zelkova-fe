@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import C_NavBar from "@/common/mocules/C_NavBar";
 import C_Footer from "@/common/organisms/C_Footer";
 import styles from "@/styles/P_MainPage.module.scss";
+import Image from "next/image";
 
 const slides = [
 	{
@@ -20,6 +21,21 @@ const slides = [
 		img: "/images/clock.jpg",
 		title: "함께 성장하는 마을",
 		subtitle: "누구도 소외되지 않는 돌봄과 연대의 복지",
+	},
+    	{
+		img: "/images/OrganizationBackground.jpg",
+		title: "지역과 함께",
+		subtitle: "소외된 이웃 없이 모두가 함께 살아가는 세상",
+	},
+    	{
+		img: "/images/clock.jpg",
+		title: "지역과 함께",
+		subtitle: "소외된 이웃 없이 모두가 함께 살아가는 세상",
+	},
+    	{
+		img: "/images/OrganizationBackground.jpg",
+		title: "지역과 함께",
+		subtitle: "소외된 이웃 없이 모두가 함께 살아가는 세상",
 	},
 ];
 
@@ -69,6 +85,7 @@ export default function MainPage() {
 
 	return (
 		<>
+            {/* 네비게이터 */}
 			<C_NavBar
 				elementList={[
 					{ label: "기관소개", submenu: ["이용안내", "시설안내", "오시는길", "조직도"] },
@@ -79,6 +96,7 @@ export default function MainPage() {
 				callback={() => {}}
 			/>
 
+            {/* 상단 슬라이드 */}
 			<div className={styles.sliderWrapper}>
 				{slides.map((slide, idx) => (
 					<div
@@ -94,13 +112,14 @@ export default function MainPage() {
 				))}
 
 				<div className={styles.arrows}>
-					<button onClick={handlePrev}>
-						<img src="/images/arrowLeft.png" alt="prev" />
-					</button>
-					<button onClick={handleNext}>
-						<img src="/images/arrowRight.png" alt="next" />
-					</button>
-				</div>
+                    <button onClick={handlePrev}>
+                        <Image src="/images/arrowLeft.png" alt="prev" width={26} height={52} />
+                    </button>
+                    <button onClick={handleNext}>
+                        <Image src="/images/arrowRight.png" alt="next" width={26} height={52} />
+                    </button>
+                </div>
+
 
 				<div className={styles.dots}>
 					{slides.map((_, idx) => (
@@ -112,7 +131,8 @@ export default function MainPage() {
 					))}
 				</div>
 			</div>
-
+            
+            {/* 푸터 */}
 			<C_Footer />
 		</>
 	);
