@@ -44,6 +44,7 @@ export default function C_PostDetailView({ title, content, createdAt, author, ch
             </div>
             ))}
         </div>
+        
         )}
          {/* 하단 버튼 */}
          <div className={styles.footerBtn}>
