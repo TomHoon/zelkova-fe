@@ -6,9 +6,8 @@ import C_WriteFromStyles from "@/styles/C_WriteFromStyles.module.scss";
 /**
  * [공통 글 작성 폼 - C_WriteForm]
  *
- * - 제목, 작성자, 작성일, 수정일, 게시 여부, 본문 작성, 첨부파일, 등록/삭제/취소 버튼 포함
- * - 추후 공지사항/이벤트/문의답변 등 다양한 유형에 재사용 가능
- * - 기능 없이 UI 마크업 + 콘솔 콜백만 포함
+ * -외부에서 title props로 제목 설정
+ * 
  */
 
 export default function C_WriteForm({title="글작성"}) {

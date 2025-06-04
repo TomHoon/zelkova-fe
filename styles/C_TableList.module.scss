@@ -2,6 +2,11 @@
     max-width: 1080px;
     margin: 32px 0;
     font-family: "Pretendard", sans-serif;
+    width: 1080px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
   }
   
   .title {

@@ -52,6 +52,11 @@ export default function C_PostDetailView({ title, content, createdAt, author, ch
             <C_Button type="B" size="wide" title="목록" />
         </div>
 
+         {/* 하단 버튼 */}
+         <div className={styles.footerBtn}>
+            <C_Button type="A" size="wide" title="삭제" />
+            <C_Button type="B" size="wide" title="목록" />
+        </div>
         </section>
     );
 }

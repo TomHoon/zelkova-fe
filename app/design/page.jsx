@@ -208,7 +208,7 @@ export default function App() {
           placeholder="작은 placeholder"
           size="sm"
         />
-        <C_WriteForm />
+        <C_WriteForm title="공지사항"/>
 
         <C_Footer />
 
