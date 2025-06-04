@@ -44,7 +44,7 @@ export default function TestPage() {
                 author="운영자"
                 postList={dummyPostList}
             >
-               <C_CommentItem comments={dummyComments} myProfile={"/images/tree.png"}/>;
+               <C_CommentItem comments={dummyComments} myProfile={"/images/tree.png"}/>
             </C_PostDetailView>
         </C_PageTemplate>
 

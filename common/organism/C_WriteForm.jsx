@@ -6,11 +6,10 @@ import C_WriteFromStyles from "@/styles/C_WriteFromStyles.module.scss";
 /**
  * [공통 글 작성 폼 - C_WriteForm]
  *
- * - 제목, 작성자, 작성일, 수정일, 게시 여부, 본문 작성, 첨부파일, 등록/삭제/취소 버튼 포함
- * - 추후 공지사항/이벤트/문의답변 등 다양한 유형에 재사용 가능
- * - 기능 없이 UI 마크업 + 콘솔 콜백만 포함
+ * -외부에서 title props로 제목 설정
+ * 
  */
-export default function C_WriteForm() {
+export default function C_WriteForm({title="글 작성 창"}) {
   const handleCancel = () => console.log("취소 버튼 클릭됨");
   const handleDelete = () => console.log("삭제 버튼 클릭됨");
   const handleSubmit = () => console.log("등록 버튼 클릭됨");
@@ -19,7 +18,7 @@ export default function C_WriteForm() {
 
   return (
     <div className={C_WriteFromStyles.wrapper}>
-      <h2 className={C_WriteFromStyles.title}>공지사항 등록 및 수정</h2>
+      <h2 className={C_WriteFromStyles.title}>{title}</h2>
 
       <div className={C_WriteFromStyles.rowInline}>
         <label htmlFor="title">제목</label>
