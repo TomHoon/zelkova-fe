@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import s from "@/styles/C_PhoneVerification.module.scss";
 
-export default function C_PhoneVerification() {
+export default function C_PhoneVerification({ onVerified }) {
   const [data, setData] = useState({
     name: "",
     birthdate: "",
@@ -15,7 +15,7 @@ export default function C_PhoneVerification() {
     sent: false,
     error: "",
     timer: 180,
-    verified: false // 인증 성공 상태 추가
+    verified: false
   });
   
   const carriers = ["SKT", "KT", "LG U+", "SKT 알뜰폰", "KT 알뜰폰", "LG U+ 알뜰폰"];
@@ -35,7 +35,7 @@ export default function C_PhoneVerification() {
   
   // 인증번호 전송
   const sendCode = () => {
-    if (ui.verified) return; // 이미 인증되었다면 동작하지 않음
+    if (ui.verified) return;
     
     setUi({...ui, sent: true, error: "", timer: 180});
     
@@ -54,16 +54,21 @@ export default function C_PhoneVerification() {
   
   // 인증번호 확인
   const verifyCode = () => {
-    if (ui.verified) return; // 이미 인증되었다면 동작하지 않음
+    if (ui.verified) return;
     
     if (data.code === "1234") {
       // 인증 성공
       setUi({
         ...ui, 
         error: "", 
-        verified: true, // 인증 성공 상태로 변경
+        verified: true,
         successMessage: "인증이 완료되었습니다"
       });
+      
+      // 부모 컴포넌트에 인증 완료 알림
+      if (onVerified) {
+        onVerified(true);
+      }
       
       // 타이머 중지
       if (timerRef.current) {
@@ -153,7 +158,7 @@ export default function C_PhoneVerification() {
         <button 
           className={s.primaryButton} 
           onClick={sendCode}
-          disabled={ui.verified} // 인증 성공 시 비활성화
+          disabled={ui.verified}
         >
           인증번호 전송
         </button>
@@ -167,11 +172,10 @@ export default function C_PhoneVerification() {
               <input
                 className={`${s.input} ${ui.error ? s.error : ''} ${ui.verified ? s.success : ''} ${!ui.verified ? s.hasRight : ''}`}
                 placeholder="인증번호 4자리 입력"
-                value={ui.verified ? "인증성공!" : data.code} // 인증 성공 시 고정값 표시
+                value={ui.verified ? "인증성공!" : data.code}
                 onChange={e => !ui.verified && setData({...data, code: e.target.value})}
-                disabled={ui.verified} // 인증 성공 시 입력 불가
+                disabled={ui.verified}
               />
-              {/* 인증 성공 전에만 타이머 표시 */}
               {!ui.verified && (
                 <div className={s.rightElement}>
                   {formatTime(ui.timer)}
@@ -181,7 +185,7 @@ export default function C_PhoneVerification() {
             <button 
               className={s.secondaryButton} 
               onClick={verifyCode}
-              disabled={ui.verified} // 인증 성공 시 비활성화
+              disabled={ui.verified}
             >
               확인
             </button>
