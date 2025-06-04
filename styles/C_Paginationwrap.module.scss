@@ -1,0 +1,19 @@
+.paginationWrapper {
+  position: relative;
+  height: 60px; // 적당한 여백
+  margin: 32px 0;
+}
+
+.paginationCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.buttonWrapper {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
