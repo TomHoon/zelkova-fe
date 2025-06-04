@@ -9,7 +9,8 @@ import C_WriteFromStyles from "@/styles/C_WriteFromStyles.module.scss";
  * -외부에서 title props로 제목 설정
  * 
  */
-export default function C_WriteForm({title="글 작성 창"}) {
+
+export default function C_WriteForm({title="글작성"}) {
   const handleCancel = () => console.log("취소 버튼 클릭됨");
   const handleDelete = () => console.log("삭제 버튼 클릭됨");
   const handleSubmit = () => console.log("등록 버튼 클릭됨");

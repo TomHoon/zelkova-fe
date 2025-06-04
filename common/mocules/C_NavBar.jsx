@@ -14,7 +14,7 @@ export default function Navbar({ elementList = [], callback }) {
     <div className={NavBarStyles.wrapper}>
       <nav className={NavBarStyles.navbar}>
         <div className={NavBarStyles.logo}>
-          <img src="/images/forest2.png" alt="로고" />
+          <img src="/images/tree.png" alt="로고" />
         </div>
 
         <ul className={NavBarStyles.menu}>
@@ -50,7 +50,7 @@ export default function Navbar({ elementList = [], callback }) {
             </div>
           ))}
         <div className={NavBarStyles.dropdownImage}>
-          <img src="/images/forest2.png" alt="트리 이미지" />
+          <img src="/images/tree.png" alt="트리 이미지" />
         </div>
       </div>
     </div>
