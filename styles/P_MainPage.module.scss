@@ -505,3 +505,85 @@
 		white-space: pre-line;
 	}
 }
+
+/**************************** 구글맵 영역 *****************************/
+.mapSection {
+	width: 1280px;
+	height: 760px;
+	background-color: var(--main-bg);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 32px;
+}
+
+.mapHeader {
+	width: 1080px;
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.mapTitle {
+	font-size: 32px;
+	font-weight: 600;
+	border-bottom: 3px solid var(--active);
+	padding-bottom: 4px;
+}
+
+.mapArrow {
+	transform: scaleX(-1);
+}
+
+.mapContentWrapper {
+	display: flex;
+	width: 1080px;
+	gap: 32px;
+}
+
+.mapInfoBox {
+	flex: 1;
+	background-color: var(--white);
+	padding: 24px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.mapInfoTitle {
+	font-size: 30px;
+	font-weight: 400;
+	color: var(--active);
+	margin-left: 10px;
+}
+
+.divider {
+	border: none;
+	border-top: 1px solid var(--line);
+	margin: 4px 0 8px;
+}
+
+.infoList {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+
+	li {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		line-height: 1.5;
+		color: var(--text);
+		padding: 10px;
+	}
+}
+
+.subTitle {
+	padding-left: 10px;
+	font-weight: 400;
+	margin-top: 40px;
+}

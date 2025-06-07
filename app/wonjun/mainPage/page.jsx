@@ -5,6 +5,8 @@ import C_NavBar from "@/common/mocules/C_NavBar";
 import C_Footer from "@/common/organisms/C_Footer";
 import styles from "@/styles/P_MainPage.module.scss";
 import Image from "next/image";
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+
 
 const slides = [
 	{
@@ -39,11 +41,12 @@ const slides = [
 	},
 ];
 
+
 export default function MainPage() {
 	const [current, setCurrent] = useState(0);
 	const intervalRef = useRef(null);
 	const timeoutRef = useRef(null);
-
+	const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 	// 자동 슬라이드
 	const startAutoSlide = () => {
 		intervalRef.current = setInterval(() => {
@@ -57,7 +60,7 @@ export default function MainPage() {
 		clearTimeout(timeoutRef.current);
 		timeoutRef.current = setTimeout(() => {
 			startAutoSlide();
-		}, 30000); // 수동 조작 후 10초 뒤 다시 시작
+		}, 30000); // 수동 조작 후 30초 뒤 다시 시작
 	};
 
 	useEffect(() => {
@@ -81,6 +84,16 @@ export default function MainPage() {
 	const goToSlide = (idx) => {
 		setCurrent(idx);
 		resetAutoSlide();
+	};
+
+	const containerStyle = {
+		width: '597px',
+		height: '517px'
+	};
+
+	const center = {
+		lat: 37.547458,
+		lng: 127.204603
 	};
 
 	return (
@@ -278,6 +291,42 @@ export default function MainPage() {
 					))}
 				</div>
 			</section>
+
+            {/* 구글맵 */}
+			<div className={styles.mapSection}>
+				<div className={styles.mapHeader}>
+					<h2 className={styles.mapTitle}>오시는 길</h2>
+				</div>
+
+				<div className={styles.mapContentWrapper}>
+					<div className={styles.mapBox}>
+						<LoadScript googleMapsApiKey={apiKey}>
+							<GoogleMap
+								mapContainerStyle={containerStyle}
+								center={center}
+								zoom={17}
+							>
+								<Marker position={center} />
+							</GoogleMap>
+						</LoadScript>
+					</div>
+
+					<div className={styles.mapInfoBox}>
+						<h3 className={styles.mapInfoTitle}>느티나무 마을</h3>
+						<hr className={styles.divider} />
+						<ul className={styles.infoList}>
+							<li><Image src="/images/file.svg" width={32} height={32} alt="icon" /> 경기도 하남시 애플로 53 (12936)</li>
+							<li><Image src="/images/file.svg" width={32} height={32} alt="icon" /> 031-796-0005</li>
+							<li><Image src="/images/file.svg" width={32} height={32} alt="icon" /> neutinamu@example.com</li>
+						</ul>
+						<strong className={styles.subTitle}>대중교통 이용 시</strong>
+						<ul className={styles.infoList}>
+							<li><Image src="/images/file.svg" width={32} height={32} alt="icon" /> 지하철 5호선 하남시청역 3번 출구에서 도보 10분</li>
+							<li><Image src="/images/file.svg" width={32} height={32} alt="icon" /> 일반버스 30, 55, 100번 하남시장 정류장 하차</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
 
             {/* 푸터 */}
