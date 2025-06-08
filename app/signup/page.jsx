@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-// import C_Button from "@/common/atom/C_Button";
-// import C_Input from "@/common/atom/C_Input";
 import C_SocialButton from "@/common/atom/C_SocialButton";
 import C_PhoneVerification from "@/common/mocules/C_PhoneVerification";
 import C_NavBar from "@/common/mocules/C_NavBar";
+import C_Modal from "@/common/mocules/C_Modal"; // 모달 컴포넌트 임포트 추가
 import styles from "@/styles/Signup.module.scss";
 
 export default function Signup() {
@@ -16,18 +15,20 @@ export default function Signup() {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  // const [name, setName] = useState("");
-  // const [birthdate, setBirthdate] = useState("");
+  const [name, setName] = useState("");
+  const [birthdate, setBirthdate] = useState("");
   const [email, setEmail] = useState("");
   const [memo, setMemo] = useState("");
   const [phoneVerified, setPhoneVerified] = useState(false);
   
   // 에러 상태 관리
-  // const [passwordError, setPasswordError] = useState(false);
   const [passwordConfirmError, setPasswordConfirmError] = useState(false);
   const [idDuplicationChecked, setIdDuplicationChecked] = useState(false);
   const [idError, setIdError] = useState("");
   const [idSuccess, setIdSuccess] = useState("");
+
+  // 모달 상태 추가
+  const [showSignupSuccessModal, setShowSignupSuccessModal] = useState(false);
 
   // 네비게이션 콜백
   const handleNavClick = (item) => {
@@ -87,8 +88,21 @@ export default function Signup() {
     
     // 회원가입 요청 처리
     console.log("회원가입 요청", { userId, password, name, birthdate, email, memo });
-    // API 호출 후 처리
-    // router.push('/signup-success');
+    
+    // 회원가입 성공 모달 표시
+    setShowSignupSuccessModal(true);
+  };
+
+  // 회원가입 성공 모달 확인 버튼 처리
+  const handleSignupSuccessConfirm = () => {
+    setShowSignupSuccessModal(false);
+    // 로그인 페이지로 이동
+    router.push('/login');
+  };
+
+  // 회원가입 성공 모달 취소 버튼 처리
+  const handleSignupSuccessCancel = () => {
+    setShowSignupSuccessModal(false);
   };
 
   return (
@@ -171,6 +185,24 @@ export default function Signup() {
 
           {/* 3. 개인정보 및 인증 그룹 */}
           <div className={styles.formGroup}>
+            <div className={styles.inputContainer}>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="이름"
+                className={styles.input}
+              />
+            </div>
+            <div className={styles.inputContainer}>
+              <input
+                type="text"
+                value={birthdate}
+                onChange={(e) => setBirthdate(e.target.value)}
+                placeholder="생년월일 (YYYY/MM/DD)"
+                className={styles.input}
+              />
+            </div>
             <div className={styles.phoneVerificationWrapper}>
               <C_PhoneVerification onVerified={() => setPhoneVerified(true)} />
             </div>
@@ -226,7 +258,6 @@ export default function Signup() {
               <button 
                 type="submit" 
                 className={styles.submitButton}
-                onClick={handleSubmit}
               >
                 확인
               </button>
@@ -242,6 +273,19 @@ export default function Signup() {
           />
         </div>
       </main>
+
+       {/* 회원가입 성공 모달 */}
+      {showSignupSuccessModal && (
+        <C_Modal
+          type="B"
+          title="회원가입"
+          content="느티나무 복지관의 오신 것을 환영합니다."
+          confirmText="로그인"
+          cancelText="취소"
+          onConfirm={handleSignupSuccessConfirm}
+          onCancel={handleSignupSuccessCancel}
+        />
+      )}
     </div>
   );
 }
