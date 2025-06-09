@@ -2,7 +2,7 @@
 
 import C_PageTemplate from "@/common/templates/C_PageTemplate";
 import C_TableList from "@/common/mocules/C_TableList";
-import C_CommentItem from "@/common/organisms/C_CommentItem";
+
 import C_Pagination from "@/common/mocules/C_Pagination";
 import styles from "@/styles/C_Paginationwrap.module.scss"
 import C_Button from "@/common/atom/C_Button";
