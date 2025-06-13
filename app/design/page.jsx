@@ -1,51 +1,51 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import C_Button from "@/common/atom/C_Button";
-import C_TabBar from "@/common/mocules/C_TabBar";
-import C_NavBar from "@/common/mocules/C_NavBar";
-import C_SocialButton from "@/common/atom/C_SocialButton";
-import C_Input from "@/common/atom/C_Input";
-import C_PostDetailView from "@/common/organisms/C_PostDetailView";
-import C_WriteForm from "@/common/organism/C_WriteForm";
-import C_Modal from "@/common/mocules/C_Modal";
-import C_SectionContainer from "@/common/mocules/C_SectionContainer";
-import C_PhoneVerification from "@/common/mocules/C_PhoneVerification";
-import C_Pagination from "@/common/mocules/C_Pagination";
-import C_DesignStyles from "@/styles/C_Design.module.scss";
-import C_Footer from "@/common/organisms/C_Footer";
-import C_TableList from "@/common/mocules/C_TableList";
+import { useState } from 'react';
+import C_Button from '@/common/atom/C_Button';
+import C_TabBar from '@/common/mocules/C_TabBar';
+import C_NavBar from '@/common/mocules/C_NavBar';
+import C_SocialButton from '@/common/atom/C_SocialButton';
+import C_Input from '@/common/atom/C_Input';
+import C_PostDetailView from '@/common/organisms/C_PostDetailView';
+import C_WriteForm from '@/common/organism/C_WriteForm';
+import C_Modal from '@/common/mocules/C_Modal';
+import C_SectionContainer from '@/common/mocules/C_SectionContainer';
+import C_PhoneVerification from '@/common/mocules/C_PhoneVerification';
+import C_Pagination from '@/common/mocules/C_Pagination';
+import C_DesignStyles from '@/styles/C_Design.module.scss';
+import C_Footer from '@/common/organisms/C_Footer';
+import C_TableList from '@/common/mocules/C_TableList';
 
 export default function App() {
   const cb = () => {
-    console.log("callback 실행");
+    console.log('callback 실행');
   };
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [age, setAge] = useState("");
-  const [email2, setEmail2] = useState("");
- 
-  const [errorInput, setErrorInput] = useState("");
-  const [focusedInput, setFocusedInput] = useState("");
-  const [dateInput, setDateInput] = useState("");
-  const [smallInput, setSmallInput] = useState("");
-  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [age, setAge] = useState('');
+  const [email2, setEmail2] = useState('');
+
+  const [errorInput, setErrorInput] = useState('');
+  const [focusedInput, setFocusedInput] = useState('');
+  const [dateInput, setDateInput] = useState('');
+  const [smallInput, setSmallInput] = useState('');
+
   const dummyPostList = [
-    { id: 10, title: "이전글 제목입니다", createdAt: "2000.00.00" },
-    { id: 8, title: "다음글 제목입니다", createdAt: "2000.00.00" },
+    { id: 10, title: '이전글 제목입니다', createdAt: '2000.00.00' },
+    { id: 8, title: '다음글 제목입니다', createdAt: '2000.00.00' },
   ];
 
   const columns = [
-    { label: "No", key: "no", width: "10%" },
-    { label: "Title", key: "title", width: "70%" },
-    { label: "Date", key: "date", width: "20%" },
+    { label: 'No', key: 'no', width: '10%' },
+    { label: 'Title', key: 'title', width: '70%' },
+    { label: 'Date', key: 'date', width: '20%' },
   ];
 
   const data = Array.from({ length: 10 }, (_, i) => ({
     no: 10,
-    title: "Lorem ipsum dolor sit amet consectetur.",
-    date: "2000.00.00",
+    title: 'Lorem ipsum dolor sit amet consectetur.',
+    date: '2000.00.00',
   }));
 
   return (
@@ -62,39 +62,39 @@ export default function App() {
         <C_Button title="로그인" size="nav" />
         <C_Button title="회원가입" size="nav" type="B" />
 
-        <C_TabBar elementList={["시설안내", "조직도"]} callback={cb} />
+        <C_TabBar elementList={['시설안내', '조직도']} callback={cb} />
 
         <C_NavBar
           elementList={[
             {
-              label: "기관소개",
-              submenu: ["이용안내", "시설안내", "오시는길", "조직도"],
+              label: '기관소개',
+              submenu: ['이용안내', '시설안내', '오시는길', '조직도'],
             },
             {
-              label: "공지사항",
-              submenu: ["공지사항", "가정통신문", "채용안내"],
+              label: '공지사항',
+              submenu: ['공지사항', '가정통신문', '채용안내'],
             },
-            { label: "후원&자원봉사", submenu: ["후원의손길", "자원봉사"] },
-            { label: "커뮤니티" },
+            { label: '후원&자원봉사', submenu: ['후원의손길', '자원봉사'] },
+            { label: '커뮤니티' },
           ]}
           callback={cb}
         />
 
         <C_SocialButton
-          onClickKakao={() => console.log("카카오 로그인")}
-          onClickGoogle={() => console.log("구글 로그인")}
+          onClickKakao={() => console.log('카카오 로그인')}
+          onClickGoogle={() => console.log('구글 로그인')}
         />
 
         <C_Input
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
           placeholder="이메일"
           type="email"
         />
 
         <C_Input
           value={email2}
-          onChange={(e) => setEmail2(e.target.value)}
+          onChange={e => setEmail2(e.target.value)}
           placeholder="이메일2"
           placeholderSize="sm"
           placeholderColor="B"
@@ -105,7 +105,7 @@ export default function App() {
 
         <C_Input
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
           placeholder="비밀번호"
           placeholderColor="B"
           state="error"
@@ -114,7 +114,7 @@ export default function App() {
 
         <C_Input
           value={age}
-          onChange={(e) => setAge(e.target.value)}
+          onChange={e => setAge(e.target.value)}
           placeholder="나이"
           placeholderSize="sm"
           placeholderColor="B"
@@ -122,16 +122,16 @@ export default function App() {
           type="number"
           width="100px"
         />
-            
+
         <C_PostDetailView
-        title="공지사항 제목"
-        content="공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다."
-        createdAt="2024.01.01"
-        author="운영자"
-        postList={dummyPostList}
+          title="공지사항 제목"
+          content="공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다. 공지사항 내용입니다."
+          createdAt="2024.01.01"
+          author="운영자"
+          postList={dummyPostList}
         >
-        <p>댓글</p>
-      </C_PostDetailView>
+          <p>댓글</p>
+        </C_PostDetailView>
 
         <h2>버튼 크기</h2>
         <C_Button title="small button" size="small" />
@@ -144,7 +144,7 @@ export default function App() {
 
         <h2>탭바</h2>
         <div className={C_DesignStyles.tabSection}>
-          <C_TabBar elementList={["시설안내", "조직도"]} callback={cb} />
+          <C_TabBar elementList={['시설안내', '조직도']} callback={cb} />
         </div>
 
         <h2>모달</h2>
@@ -182,14 +182,14 @@ export default function App() {
         <h2>입력 필드</h2>
         <C_Input
           value={errorInput}
-          onChange={(e) => setErrorInput(e.target.value)}
+          onChange={e => setErrorInput(e.target.value)}
           placeholder="에러"
           state="error"
         />
 
         <C_Input
           value={dateInput}
-          onChange={(e) => setDateInput(e.target.value)}
+          onChange={e => setDateInput(e.target.value)}
           width="200px"
           placeholder="날짜"
           isDate={true}
@@ -197,18 +197,18 @@ export default function App() {
 
         <C_Input
           value={focusedInput}
-          onChange={(e) => setFocusedInput(e.target.value)}
+          onChange={e => setFocusedInput(e.target.value)}
           placeholder="클릭 시"
           state="focused"
         />
 
         <C_Input
           value={smallInput}
-          onChange={(e) => setSmallInput(e.target.value)}
+          onChange={e => setSmallInput(e.target.value)}
           placeholder="작은 placeholder"
           size="sm"
         />
-        <C_WriteForm title="공지사항"/>
+        <C_WriteForm title="공지사항" />
 
         <C_Footer />
 
@@ -217,7 +217,7 @@ export default function App() {
           columns={columns}
           data={data}
           searchable={true}
-          onSearch={(keyword) => console.log(keyword)}
+          onSearch={keyword => console.log(keyword)}
         />
 
         <h2>휴대폰 인증</h2>

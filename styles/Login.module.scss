@@ -58,7 +58,7 @@
 
 .logoIcon {
   margin-bottom: 20px;
-  
+
   img {
     width: 80px;
     height: 80px;
@@ -72,7 +72,7 @@
     color: var(--text);
     line-height: 1.5;
   }
-  
+
   .siteName {
     font-size: 18px;
     font-weight: 600;
@@ -98,20 +98,20 @@
   border: 1px solid var(--line);
   background: var(--white);
   padding: 0 16px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   outline: none;
   color: var(--title1);
   font-size: 16px;
   box-sizing: border-box;
-  
+
   &::placeholder {
     color: var(--subtext);
   }
-  
+
   &:focus {
     border-color: var(--active);
   }
-  
+
   &.error {
     border-color: var(--warning);
   }
@@ -134,14 +134,14 @@
   background: var(--active);
   color: var(--white);
   border: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   margin-bottom: 30px;
-  
+
   &:hover {
     background: var(--hover);
   }
-  
+
   &:disabled {
     opacity: 0.6;
     cursor: default;
@@ -171,7 +171,7 @@
   color: var(--subtext);
   font-size: 14px;
   text-decoration: none;
-  
+
   &:hover {
     color: var(--active);
     text-decoration: underline;
@@ -185,7 +185,7 @@
 
 .logoSection {
   text-align: center;
-  
+
   &.step2 {
     margin-bottom: 30px;
     margin-top: 20px; // 위쪽 여백 추가

@@ -49,7 +49,7 @@
 
 .formGroup {
   margin-bottom: 38px;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -68,18 +68,22 @@
   border: 1px solid var(--line);
   background: var(--white);
   padding: 0 16px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   outline: none;
   color: var(--title1);
   font-size: 14px;
   box-sizing: border-box;
-  
+
   &::placeholder {
     color: var(--subtext);
   }
-  
-  &.error { border-color: var(--warning); }
-  &.success { border-color: var(--success); }
+
+  &.error {
+    border-color: var(--warning);
+  }
+  &.success {
+    border-color: var(--success);
+  }
 }
 
 .inputWithButton {
@@ -87,12 +91,12 @@
   gap: 8px;
   align-items: flex-start;
   width: 100%;
-  
+
   .input {
     flex: 1;
     min-width: 0;
   }
-  
+
   .primaryButton {
     flex-shrink: 0;
   }
@@ -107,9 +111,9 @@
   background: var(--white);
   color: var(--title1);
   border: 2px solid var(--active);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.7);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   min-width: 120px;
-  
+
   &:disabled {
     opacity: 0.6;
     cursor: default;
@@ -142,19 +146,23 @@
   border: 1px solid var(--line);
   background: var(--white);
   padding: 0 16px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   outline: none;
   color: var(--title1);
   font-size: 14px;
   min-width: 0;
   box-sizing: border-box;
-  
+
   &::placeholder {
     color: var(--subtext);
   }
-  
-  &.error { border-color: var(--warning); }
-  &.success { border-color: var(--success); }
+
+  &.error {
+    border-color: var(--warning);
+  }
+  &.success {
+    border-color: var(--success);
+  }
 }
 
 .atSymbol {
@@ -173,18 +181,18 @@
   border: 1px solid var(--line);
   background: var(--white);
   padding: 16px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   outline: none;
   color: var(--title1);
   font-size: 14px;
   resize: none;
   box-sizing: border-box;
   font-family: inherit;
-  
+
   &::placeholder {
     color: var(--subtext);
   }
-  
+
   &:focus {
     border-color: var(--active);
   }
@@ -199,9 +207,9 @@
   background: var(--active);
   color: var(--white);
   border: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  
+
   &:disabled {
     opacity: 0.6;
     cursor: default;
