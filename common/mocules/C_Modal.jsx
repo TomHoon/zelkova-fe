@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useRef, useEffect } from "react";
-import C_ModalStyles from "@/styles/C_Modal.module.scss";
-import C_Button from "@/common/atom/C_Button";
+import { useState, useRef, useEffect } from 'react';
+import C_ModalStyles from '@/styles/C_Modal.module.scss';
+import C_Button from '@/common/atom/C_Button';
 
 /**
  *
@@ -29,11 +29,11 @@ import C_Button from "@/common/atom/C_Button";
  */
 
 export default function C_Modal({
-  type = "A",
-  title = "모달창",
-  content = "",
-  confirmText = "확인",
-  cancelText = "취소",
+  type = 'A',
+  title = '모달창',
+  content = '',
+  confirmText = '확인',
+  cancelText = '취소',
   onConfirm,
   onCancel,
   isStatic = false, // 실제로 작업할땐 제외하기
@@ -48,10 +48,10 @@ export default function C_Modal({
       // 현재 컨텐츠 높이가 max-height(80px)를 초과하는지 체크
       const hasOverflow = contentRef.current.scrollHeight > 80;
       setNeedsScroll(hasOverflow);
-      
+
       // 디버깅 정보 출력
-      console.log("Content Height:", contentRef.current.scrollHeight);
-      console.log("Needs Scroll:", hasOverflow);
+      console.log('Content Height:', contentRef.current.scrollHeight);
+      console.log('Needs Scroll:', hasOverflow);
     }
   }, [content]);
 
@@ -69,7 +69,7 @@ export default function C_Modal({
     setIsOpen(false);
   };
 
-  const handleOverlayClick = (e) => {
+  const handleOverlayClick = e => {
     if (e.target === e.currentTarget) {
       setIsOpen(false);
     }
@@ -78,12 +78,12 @@ export default function C_Modal({
   // 본문 텍스트 파싱 함수
   const parseContent = () => {
     if (!content) return [];
-    
+
     const regex = /\[b\](.*?)\[\/b\]/g;
     let lastIndex = 0;
     const elements = [];
     let match;
-    
+
     while ((match = regex.exec(content)) !== null) {
       // 강조 텍스트 앞에 있는 일반 텍스트 추가
       if (match.index > lastIndex) {
@@ -93,17 +93,17 @@ export default function C_Modal({
           </span>
         );
       }
-      
+
       // 강조 텍스트 추가
       elements.push(
         <span key={`emphasis-${match.index}`} className={C_ModalStyles.emphasisText}>
           {match[1]}
         </span>
       );
-      
+
       lastIndex = regex.lastIndex;
     }
-    
+
     // 마지막 강조 텍스트 이후의 일반 텍스트 추가
     if (lastIndex < content.length) {
       elements.push(
@@ -112,7 +112,7 @@ export default function C_Modal({
         </span>
       );
     }
-    
+
     return elements;
   };
 
@@ -120,32 +120,37 @@ export default function C_Modal({
 
   // 모달 컨텐츠
   const modalContent = (
-    <div className={`${C_ModalStyles.modalContainer} ${isStatic ? C_ModalStyles.staticModal : ""}`}>
+    <div className={`${C_ModalStyles.modalContainer} ${isStatic ? C_ModalStyles.staticModal : ''}`}>
       <div className={C_ModalStyles.modalHeader}>
         <h3 className={C_ModalStyles.modalTitle}>{title}</h3>
       </div>
-      <div 
+      <div
         ref={contentRef} // 스크롤 필요 여부 감지를 위한 ref
-        className={`${C_ModalStyles.modalBody} ${needsScroll ? C_ModalStyles.hasScroll : ""}`} // 조건부 클래스 추가
+        className={`${C_ModalStyles.modalBody} ${needsScroll ? C_ModalStyles.hasScroll : ''}`} // 조건부 클래스 추가
       >
         <p>{parseContent()}</p>
       </div>
-      <div className={`${C_ModalStyles.modalFooter} ${type === "B" ? C_ModalStyles.twoButtons : ""}`}>
-        {type === "B" && ( // 모달 B 타입에만 표시 (취소버튼)
-          <C_Button 
-            size="large" 
+      <div
+        className={`${C_ModalStyles.modalFooter} ${type === 'B' ? C_ModalStyles.twoButtons : ''}`}
+      >
+        {type === 'B' && ( // 모달 B 타입에만 표시 (취소버튼)
+          <C_Button
+            size="large"
             type="A" // 테두리 타입 버튼 사용
             title={cancelText} // props에서 전달받은 cancelText
             onClick={handleCancelClick} // 버튼 클릭 시 실행될 함수
           />
         )}
         <C_Button // 모달에 모두 들어감 (확인버튼)
-          size="large" 
+          size="large"
           type={
-            type === "A" ? "A" :  // A타입: 녹색 테두리 버튼
-            type === "B" ? "B" :  // B타입: 녹색 채워진 버튼
-            type === "C" ? "B" :  // C타입: 녹색 채워진 버튼
-            "A"
+            type === 'A'
+              ? 'A' // A타입: 녹색 테두리 버튼
+              : type === 'B'
+                ? 'B' // B타입: 녹색 채워진 버튼
+                : type === 'C'
+                  ? 'B' // C타입: 녹색 채워진 버튼
+                  : 'A'
           }
           title={confirmText} // props에서 전달받은 confirmText
           onClick={handleConfirmClick} // 버튼 클릭 시 실행될 함수
@@ -161,10 +166,7 @@ export default function C_Modal({
 
   // 동적 모드일 경우 오버레이와 함께 모달 반환
   return (
-    <div 
-      className={C_ModalStyles.overlay}
-      onClick={handleOverlayClick}
-    >
+    <div className={C_ModalStyles.overlay} onClick={handleOverlayClick}>
       {modalContent}
     </div>
   );

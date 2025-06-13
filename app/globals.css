@@ -3,7 +3,7 @@
   --foreground: #171717;
   --main: #82d3ac;
   --hover: #8fdab6;
-  --active: #5A8F7B;
+  --active: #5a8f7b;
   --success: #7ca9ed;
   --warning: #ff8888;
   --heart: #ff8888;
@@ -14,8 +14,8 @@
   --line: #f6f6f6;
   --footer: #f9f8f0;
   --white: #ffffff;
-  --section-title-bg: #FDFCF8;
-  --main-bg: #F9F9F9;
+  --section-title-bg: #fdfcf8;
+  --main-bg: #f9f9f9;
 }
 
 .background {
@@ -60,7 +60,7 @@
 .section-title-bg {
   color: var(--section-title-bg);
 }
-.main-bg{
+.main-bg {
   color: var(--main-bg);
 }
 

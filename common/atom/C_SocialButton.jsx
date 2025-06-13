@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import C_SocialButton from "@/styles/C_SoicalButton.module.scss";
+import C_SocialButton from '@/styles/C_SoicalButton.module.scss';
 
 /**
  * [소셜 로그인 버튼]
@@ -26,14 +26,8 @@ export default function SocialButton({
       </div>
 
       <div className={C_SocialButton.icon}>
-        <button
-          className={C_SocialButton.kakaoBtn}
-          onClick={onClickKakao}
-        ></button>
-        <button
-          className={C_SocialButton.googleBtn}
-          onClick={onClickGoogle}
-        ></button>
+        <button className={C_SocialButton.kakaoBtn} onClick={onClickKakao}></button>
+        <button className={C_SocialButton.googleBtn} onClick={onClickGoogle}></button>
       </div>
 
       <div className={C_SocialButton.findbar}>

@@ -51,34 +51,39 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:first-child {
     border-radius: 8px 0 0 8px;
   }
-  
+
   &:last-child {
     border-radius: 0 8px 8px 0;
   }
-  
+
   &.active {
     background: var(--active);
     color: var(--white);
   }
-  
+
   &:hover:not(.active) {
     background: var(--hover);
     color: var(--white);
   }
 }
 
-
 .tabContent {
   animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .description {
@@ -105,16 +110,16 @@
   border: 1px solid var(--line);
   background: var(--white);
   padding: 0 16px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   outline: none;
   color: var(--title1);
   font-size: 14px;
   box-sizing: border-box;
-  
+
   &::placeholder {
     color: var(--subtext);
   }
-  
+
   &:focus {
     border-color: var(--active);
   }
@@ -133,15 +138,15 @@
   background: var(--active);
   color: var(--white);
   border: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   margin-bottom: 40px;
-  
+
   &:disabled {
     opacity: 0.6;
     cursor: default;
   }
-  
+
   &:hover:not(:disabled) {
     background: var(--hover);
   }

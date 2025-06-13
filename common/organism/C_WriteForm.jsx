@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import C_Button from "@/common/atom/C_Button";
-import C_WriteFromStyles from "@/styles/C_WriteFromStyles.module.scss";
+import C_Button from '@/common/atom/C_Button';
+import C_WriteFromStyles from '@/styles/C_WriteFromStyles.module.scss';
 
 /**
  * [공통 글 작성 폼 - C_WriteForm]
  *
  * -외부에서 title props로 제목 설정
- * 
+ *
  */
 
-export default function C_WriteForm({title="글작성"}) {
-  const handleCancel = () => console.log("취소 버튼 클릭됨");
-  const handleDelete = () => console.log("삭제 버튼 클릭됨");
-  const handleSubmit = () => console.log("등록 버튼 클릭됨");
-  const handleAddFile = () => console.log("파일 추가 클릭됨");
-  const handleRemoveFile = () => console.log("파일 삭제 클릭됨");
+export default function C_WriteForm({ title = '글작성' }) {
+  const handleCancel = () => console.log('취소 버튼 클릭됨');
+  const handleDelete = () => console.log('삭제 버튼 클릭됨');
+  const handleSubmit = () => console.log('등록 버튼 클릭됨');
+  const handleAddFile = () => console.log('파일 추가 클릭됨');
+  const handleRemoveFile = () => console.log('파일 삭제 클릭됨');
 
   return (
     <div className={C_WriteFromStyles.wrapper}>
@@ -33,7 +33,13 @@ export default function C_WriteForm({title="글작성"}) {
         </div>
         <div className={C_WriteFromStyles.rowInline}>
           <label htmlFor="createdAt">작성일</label>
-          <input id="createdAt" type="text" className={C_WriteFromStyles.inputMeta} placeholder="0000-00-00" readOnly />
+          <input
+            id="createdAt"
+            type="text"
+            className={C_WriteFromStyles.inputMeta}
+            placeholder="0000-00-00"
+            readOnly
+          />
         </div>
       </div>
 
@@ -47,7 +53,13 @@ export default function C_WriteForm({title="글작성"}) {
         </div>
         <div className={C_WriteFromStyles.rowInline}>
           <label htmlFor="updatedAt">수정일</label>
-          <input id="updatedAt" type="text" className={C_WriteFromStyles.inputMeta} placeholder="0000-00-00" readOnly />
+          <input
+            id="updatedAt"
+            type="text"
+            className={C_WriteFromStyles.inputMeta}
+            placeholder="0000-00-00"
+            readOnly
+          />
         </div>
       </div>
 

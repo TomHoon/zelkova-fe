@@ -2,9 +2,9 @@
 
 /** 외부 이미지 테스트용 */
 const nextConfig = {
-    images: {
-        domains: ['media.istockphoto.com'],
-    },
+  images: {
+    domains: ['media.istockphoto.com'],
+  },
 };
 
 export default nextConfig;

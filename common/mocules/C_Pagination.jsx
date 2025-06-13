@@ -1,6 +1,6 @@
-"use client";
-import { useState, useEffect } from "react";
-import s from "@/styles/C_Pagination.module.scss";
+'use client';
+import { useState, useEffect } from 'react';
+import s from '@/styles/C_Pagination.module.scss';
 
 export default function C_Pagination({
   currentPage = 1,
@@ -9,21 +9,21 @@ export default function C_Pagination({
   onPageChange = () => {},
 }) {
   const [current, setCurrent] = useState(currentPage);
-  
+
   // 페이지 범위 계산
   const getPages = () => {
     const start = Math.floor((current - 1) / displayPageCount) * displayPageCount + 1;
     const end = Math.min(start + displayPageCount - 1, totalPages);
-    return Array.from({length: end - start + 1}, (_, i) => start + i);
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
   };
-  
+
   // 페이지 변경 핸들러
-  const changePage = (page) => {
+  const changePage = page => {
     if (page < 1 || page > totalPages) return;
     setCurrent(page);
     onPageChange(page);
   };
-  
+
   // props로 현재 페이지가 변경될 때 상태 업데이트
   useEffect(() => setCurrent(currentPage), [currentPage]);
 
@@ -48,20 +48,20 @@ export default function C_Pagination({
           <span>&lsaquo;</span>
         </button>
       </div>
-      
+
       {/* 페이지 번호 */}
       <div className={s.pageGroup}>
         {getPages().map(page => (
           <button
             key={page}
-            className={`${s.pageButton} ${current === page ? s.active : ""}`}
+            className={`${s.pageButton} ${current === page ? s.active : ''}`}
             onClick={() => changePage(page)}
           >
             {page}
           </button>
         ))}
       </div>
-      
+
       {/* 오른쪽 화살표 */}
       <div className={s.navGroup}>
         <button

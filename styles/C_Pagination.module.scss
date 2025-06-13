@@ -78,39 +78,39 @@
   cursor: pointer;
   padding: 0 8px;
   transition: 0.2s;
-  
+
   // 호버 상태 - 마우스가 올라갔을 때
   &:hover:not(:disabled):not(.active) {
     background: var(--hover);
     color: var(--white);
     border-color: var(--hover);
   }
-  
+
   // 클릭 상태 - 마우스로 버튼을 누르고 있을 때
   &:active:not(:disabled):not(.active) {
     background: var(--active);
     color: var(--white);
     border-color: var(--active);
   }
-  
+
   // 비활성화 상태
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
-  
+
   // 현재 선택된 페이지 (React에서 current === page일 때)
   &.active {
     background: var(--main);
     color: var(--white);
     border-color: var(--main);
-    
+
     // 현재 페이지에서 마우스 클릭 상태
     &:active {
       background: var(--active);
       border-color: var(--active);
     }
-    
+
     // 현재 페이지에서 호버 상태
     &:hover {
       background: var(--hover);
