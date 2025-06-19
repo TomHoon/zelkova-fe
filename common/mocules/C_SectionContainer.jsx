@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import styles from "@/styles/C_SectionContainer.module.scss";
+import styles from '@/styles/C_SectionContainer.module.scss';
 
 /**
  *
@@ -18,10 +18,8 @@ export default function C_SectionContainer({ title, children }) {
       <div className={styles.sectionHeader}>
         <h2 className={styles.title}>{title}</h2>
       </div>
-      
-      <div className={styles.sectionContent}>
-        {children}
-      </div>
+
+      <div className={styles.sectionContent}>{children}</div>
     </section>
   );
 }

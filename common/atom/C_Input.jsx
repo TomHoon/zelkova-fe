@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import C_InputStyles from "@/styles/C_Input.module.scss";
+import C_InputStyles from '@/styles/C_Input.module.scss';
 
 const PlaceholderSizeMap = {
   sm: C_InputStyles.placeholderSm,
@@ -13,7 +13,7 @@ const PlaceholderColorMap = {
 };
 
 const StateMap = {
-  default: "",
+  default: '',
   error: C_InputStyles.error,
   focused: C_InputStyles.focused,
 };
@@ -27,19 +27,19 @@ const StateMap = {
  * - 테두리: state로 정의 [default | error | focused]
  *
  * - 플레이스홀더: size  [sm 14px | md 16px(기본값)]
- *               color [A(기본값) | B] 
+ *               color [A(기본값) | B]
  *
  *  */
 
 export default function C_Input({
   value,
   onChange,
-  placeholder = "",
-  width = "100%",
-  placeholderSize = "md",
-  placeholderColor = "A",
-  state = "default",
-  type = "text",
+  placeholder = '',
+  width = '100%',
+  placeholderSize = 'md',
+  placeholderColor = 'A',
+  state = 'default',
+  type = 'text',
 }) {
   return (
     <input
