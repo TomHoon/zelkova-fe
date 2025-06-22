@@ -1,0 +1,109 @@
+.postDetailView {
+  width: 1080px;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.headerBar {
+  width: 1080px;
+  height: 50px;
+  background-color: var(--active);
+  border-radius: 8px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white);
+  font-size: 16px;
+}
+
+.title {
+  font-weight: 300;
+}
+
+.meta {
+  display: flex;
+  gap: 12px;
+  font-weight: 300;
+  align-items: baseline;
+}
+
+.content {
+  font-size: 14px;
+  font-weight: 400;
+  white-space: pre-line;
+  display: flex;
+  justify-content: center;
+}
+
+.innerContent {
+  width: 1040px;
+}
+.contentTitle {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.commentArea {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.innerCommnetArea {
+  width: 1040px;
+}
+
+.footerBtn {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.postNavigation {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  margin-top: 32px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 60px 1fr 120px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.index {
+  text-align: center;
+}
+
+.title {
+  padding: 0 16px;
+}
+
+.date {
+  text-align: right;
+}
+.imageBlock {
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+}

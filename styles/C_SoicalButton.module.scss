@@ -1,18 +1,17 @@
 .snswrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: transparent;
-    gap: 24px;
-    font-family: "Pretendard", sans-serif;
-    width: 260px;
-    max-width: 260px; // 너무 좁으면 가로선이 안 보일 수 있음
-    margin: 0 auto;
-  }
-  
-  
-  /* 구분선과 텍스트 */
-  .divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  gap: 24px;
+  font-family: 'Pretendard', sans-serif;
+  width: 260px;
+  max-width: 260px; // 너무 좁으면 가로선이 안 보일 수 있음
+  margin: 0 auto;
+}
+
+/* 구분선과 텍스트 */
+.divider {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,75 +19,68 @@
 
   span {
     font-size: 14px;
-    color: #A6A6A6;
-    font-family: "Pretendard", sans-serif;
+    color: #a6a6a6;
+    font-family: 'Pretendard', sans-serif;
     font-weight: 400;
     white-space: nowrap;
   }
 
   &::before,
   &::after {
-    content: "";
-    width: 72px;                // ✅ 고정 길이
+    content: '';
+    width: 72px;
     height: 1px;
-    background-color: #F2F2F2;  // ✅ 선 색상
+    background-color: #f2f2f2;
   }
 }
 
-  
-  
-  
-  
-  
-  /* 아이콘 영역 */
-  .icon {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-  
-    button {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 40px;
-      border: none;
-      cursor: pointer;
-    }
-  
-    .kakaoBtn {
-      background-color: #FFE812;
-      background-image: url("/images/kakao.png");
-    }
-  
-    .googleBtn {
-      background-color: #F5F5F5;
-      background-image: url("/images/google.png");
-    }
+/* 아이콘 영역 */
+.icon {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+
+  button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    border: none;
+    cursor: pointer;
   }
-  
-  /* 하단 텍스트 링크 */
-  .findbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px; 
-    width: 100%;
-    max-width: 241px; 
-    height: 14px;
-    font-size: 12px;
-    color: #A6A6A6;
-    font-weight: 400;
-    font-family: "Pretendard", sans-serif;
-    line-height: 100%;
-    letter-spacing: 0;
-  
-    a {
-      text-decoration: none;
-      cursor: pointer;
-      white-space: nowrap; 
-    }
+
+  .kakaoBtn {
+    background-color: #ffe812;
+    background-image: url('/images/kakao.png');
   }
-  
-  
+
+  .googleBtn {
+    background-color: #f5f5f5;
+    background-image: url('/images/google.png');
+  }
+}
+
+/* 하단 텍스트 링크 */
+.findbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 241px;
+  height: 14px;
+  font-size: 12px;
+  color: #a6a6a6;
+  font-weight: 400;
+  font-family: 'Pretendard', sans-serif;
+  line-height: 100%;
+  letter-spacing: 0;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+}

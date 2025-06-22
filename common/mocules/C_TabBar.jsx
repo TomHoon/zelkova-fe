@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import TabBarStyles from "@/styles/C_TabBar.module.scss";
-import { useState } from "react";
+import TabBarStyles from '@/styles/C_TabBar.module.scss';
+import { useState } from 'react';
 
 /**
  *
@@ -15,10 +15,10 @@ import { useState } from "react";
 export default function TabBar({ elementList = [], callback }) {
   const [activeIdx, setActiveIdx] = useState(0);
 
-  const clickedThroughProxy = (idx) => {
+  const clickedThroughProxy = idx => {
     setActiveIdx(idx);
 
-    if (typeof callback == "function") {
+    if (typeof callback == 'function') {
       callback();
     }
   };
@@ -31,7 +31,7 @@ export default function TabBar({ elementList = [], callback }) {
             <li
               key={idx}
               onClick={() => clickedThroughProxy(idx)}
-              className={idx == activeIdx ? TabBarStyles.active : ""}
+              className={idx == activeIdx ? TabBarStyles.active : ''}
             >
               <span>{item}</span>
             </li>

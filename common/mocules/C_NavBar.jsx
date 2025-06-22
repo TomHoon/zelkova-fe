@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import NavBarStyles from "@/styles/C_NavBar.module.scss";
-import C_Button from "../atom/C_Button";
+import NavBarStyles from '@/styles/C_NavBar.module.scss';
+import C_Button from '../atom/C_Button';
 
 export default function Navbar({ elementList = [], callback }) {
   const handleClick = (idx, label) => {
-    if (typeof callback === "function") {
+    if (typeof callback === 'function') {
       callback(idx, label);
     }
   };
@@ -14,15 +14,13 @@ export default function Navbar({ elementList = [], callback }) {
     <div className={NavBarStyles.wrapper}>
       <nav className={NavBarStyles.navbar}>
         <div className={NavBarStyles.logo}>
-          <img src="/images/forest2.png" alt="로고" />
+          <img src="/images/tree.png" alt="로고" />
         </div>
 
         <ul className={NavBarStyles.menu}>
           {elementList.map((item, idx) => (
             <li key={idx} className={NavBarStyles.menuItem}>
-              <span onClick={() => handleClick(idx, item.label)}>
-                {item.label}
-              </span>
+              <span onClick={() => handleClick(idx, item.label)}>{item.label}</span>
             </li>
           ))}
         </ul>
@@ -35,7 +33,7 @@ export default function Navbar({ elementList = [], callback }) {
 
       <div className={NavBarStyles.dropdown}>
         {elementList
-          .filter((menu) => menu.submenu && menu.submenu.length > 0)
+          .filter(menu => menu.submenu && menu.submenu.length > 0)
           .map((menu, idx) => (
             <div key={idx} className={NavBarStyles.dropdownColumn}>
               {menu.submenu.map((sub, subIdx) => (
@@ -50,7 +48,7 @@ export default function Navbar({ elementList = [], callback }) {
             </div>
           ))}
         <div className={NavBarStyles.dropdownImage}>
-          <img src="/images/forest2.png" alt="트리 이미지" />
+          <img src="/images/tree.png" alt="트리 이미지" />
         </div>
       </div>
     </div>

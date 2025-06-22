@@ -1,0 +1,48 @@
+.mapSection {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.mapFooter {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 129px;
+  background-color: var(--main-bg);
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.mapLabel {
+  color: var(--title);
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.mapInfoWrapper {
+  display: flex;
+  width: 500px;
+  gap: 32px;
+}
+
+.mapInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 1;
+
+  strong {
+    color: var(--title);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  span {
+    display: inline-block;
+    color: var(--title2);
+    font-size: 16px;
+    line-height: 1;
+  }
+}

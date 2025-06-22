@@ -42,36 +42,27 @@
   padding-left: 10px;
   text-align: center;
   max-height: 80px;
-  overflow-y: hidden; // 내용 많을 때 스크롤 허용
+  overflow-y: hidden;
 
   &.hasScroll {
-    overflow-y: auto; // 내용이 max-height를 넘을 때만 스크롤
+    overflow-y: auto;
   }
-  
+
   p {
     margin: 0;
     line-height: 1.6;
     font-size: 15px;
-
-    white-space: pre-wrap; // space 허용
+    white-space: pre-wrap;
   }
 
-  /* 스크롤바 스타일링 - Webkit 브라우저용 (Chrome, Safari, Edge) */
-  &::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  
   &::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
   }
-  
   &::-webkit-scrollbar-track {
     background: transparent;
   }
 
-/* Firefox용 스크롤바 스타일 */
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
@@ -88,27 +79,27 @@
 .modalFooter {
   display: flex;
   justify-content: center;
-  
+
+  // 버튼 하나일 때 184px 너비 고정
   button {
-    transition: background-color 0.2s, transform 0.1s;
-    
+    transition:
+      background-color 0.2s,
+      transform 0.1s;
+    width: 184px; // 버튼 하나일 때 고정 너비
+
     &:hover {
       background-color: var(--hover);
-
       span {
         color: var(--line);
       }
-
     }
-    
+
     &:active {
       background-color: var(--active);
       transform: translateY(1px);
-
       span {
         color: var(--line);
       }
-
     }
   }
 }
@@ -117,16 +108,20 @@
   display: flex;
   justify-content: space-between;
   gap: 4px;
+
+  // 버튼 두 개일 때는 너비 자동 조정
+  button {
+    width: auto;
+    flex: 1; // 남은 공간을 균등 분할
+  }
 }
 
-/* 반응형 스타일 */
 @media (max-width: 480px) {
   .modalContainer {
     width: 90%;
   }
 }
 
-// 정적 모드를 위한 스타일
 .staticModal {
   position: static;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -134,7 +129,6 @@
   height: 252px;
 }
 
-// 디자인 페이지를 위한 스타일
 .modalWrapper {
   display: flex;
   flex-direction: column;
@@ -146,7 +140,6 @@
   padding: 24px;
   border: 1px dashed var(--subtext);
   border-radius: 8px;
-  
   h3 {
     margin-bottom: 24px;
     text-align: center;

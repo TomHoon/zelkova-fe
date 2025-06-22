@@ -19,6 +19,11 @@
   height: 45px;
 }
 
+.small {
+  width: 84px;
+  height: 40px;
+}
+
 .medium {
   width: 120px;
   height: 40px;
@@ -47,7 +52,7 @@
     color: var(--text);
   }
   background: var(--white);
-  border: 1px solid var(--main);
+  border: 1px solid var(--active);
 }
 
 .B {
@@ -56,7 +61,7 @@
   & span {
     color: var(--white);
   }
-  background: var(--main);
+  background: var(--active);
   border: none;
 }
 
@@ -64,9 +69,8 @@
   @extend %radius-default;
   @extend %align-default;
   & span {
-    color: var(--main);
+    color: var(--active);
   }
   background: var(--white);
-  border: 1px solid var(--main);
+  border: 1px solid var(--active);
 }
-

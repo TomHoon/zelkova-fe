@@ -1,0 +1,168 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Pretendard', sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  height: 38px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rowInline {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rowGroup {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.row label,
+.rowInline label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #444;
+  min-width: 60px;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  color: #333;
+  background-color: #fff;
+  font-family: inherit;
+}
+
+.inputTitle {
+  width: 1000px;
+  height: 40px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+}
+
+.inputMeta {
+  width: 185px;
+  height: 40px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+}
+
+.textarea {
+  height: 200px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.fileBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.fileName {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fileName div:first-child {
+  background-color: #e7f8f0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.fileName div:last-child {
+  font-size: 13px;
+  color: #aaa;
+  padding-left: 4px;
+}
+
+.fileActions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fileActions button {
+  width: 120px;
+  height: 35px;
+}
+
+.footerButtons {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 0 16px;
+  }
+
+  .rowGroup {
+    flex-direction: column;
+  }
+
+  .footerButtons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rowInline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fileBox {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fileActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
