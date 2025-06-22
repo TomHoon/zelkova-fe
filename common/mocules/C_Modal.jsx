@@ -78,12 +78,10 @@ export default function C_Modal({
   // 본문 텍스트 파싱 함수
   const parseContent = () => {
     if (!content) return [];
-
     const regex = /\[b\](.*?)\[\/b\]/g;
     let lastIndex = 0;
     const elements = [];
     let match;
-
     while ((match = regex.exec(content)) !== null) {
       // 강조 텍스트 앞에 있는 일반 텍스트 추가
       if (match.index > lastIndex) {
@@ -93,7 +91,6 @@ export default function C_Modal({
           </span>
         );
       }
-
       // 강조 텍스트 추가
       elements.push(
         <span key={`emphasis-${match.index}`} className={C_ModalStyles.emphasisText}>
@@ -112,7 +109,6 @@ export default function C_Modal({
         </span>
       );
     }
-
     return elements;
   };
 
