@@ -5,7 +5,9 @@ import C_NavBar from '@/common/mocules/C_NavBar';
 import C_Footer from '@/common/organisms/C_Footer';
 import styles from '@/styles/P_MainPage.module.scss';
 import Image from 'next/image';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import dynamic from 'next/dynamic';
+
+const C_KakaoMap = dynamic(() => import('@/common/organisms/C_KakaoMap'), { ssr: false });
 
 const slides = [
   {
@@ -339,11 +341,7 @@ export default function MainPage() {
 
         <div className={styles.mapContentWrapper}>
           <div className={styles.mapBox}>
-            <LoadScript googleMapsApiKey={apiKey}>
-              <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17}>
-                <Marker position={center} />
-              </GoogleMap>
-            </LoadScript>
+            <C_KakaoMap />
           </div>
 
           <div className={styles.mapInfoBox}>

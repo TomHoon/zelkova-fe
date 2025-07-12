@@ -2,8 +2,10 @@
 
 import C_PageTemplate from '@/common/templates/C_PageTemplate';
 import C_SectionContainer from '@/common/mocules/C_SectionContainer';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import styles from '@/styles/P_Location.module.scss';
+import dynamic from 'next/dynamic';
+
+const C_KakaoMap = dynamic(() => import('@/common/organisms/C_KakaoMap'), { ssr: false });
 
 export default function TestPage() {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -33,11 +35,9 @@ export default function TestPage() {
     >
       <C_SectionContainer title="오시는길">
         <div className={styles.mapSection}>
-          <LoadScript googleMapsApiKey={apiKey}>
-            <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}>
-              <Marker position={center} />
-            </GoogleMap>
-          </LoadScript>
+          <div className={styles.mapBox}>
+            <C_KakaoMap />
+          </div>
 
           <div className={styles.mapFooter}>
             <span className={styles.mapLabel}>오시는 길</span>
