@@ -26,9 +26,9 @@ const ColorTypeMap = {
  * - 글자: title (기본값 "버튼")
  *
  */
-export default function C_Button({ size = 'medium', type = 'A', title = '버튼' }) {
+export default function C_Button({ size = 'medium', type = 'A', title = '버튼', onClick }) {
   return (
-    <button className={`${SizeMap[size]} ${ColorTypeMap[type]}`}>
+    <button className={`${SizeMap[size]} ${ColorTypeMap[type]}`} onClick={onClick} type="button">
       <span>{title}</span>
     </button>
   );

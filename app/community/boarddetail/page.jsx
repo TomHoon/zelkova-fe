@@ -4,7 +4,7 @@ import C_PageTemplate from '@/common/templates/C_PageTemplate';
 import C_PostDetailView from '@/common/organisms/C_PostDetailView';
 import C_CommentItem from '@/common/organisms/C_CommentItem';
 
-export default function NoticePage() {
+export default function CommunityDetail() {
   const handleTabClick = label => {
     console.log('탭 클릭됨:', label);
   };

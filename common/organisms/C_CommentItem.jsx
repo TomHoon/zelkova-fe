@@ -1,5 +1,6 @@
 'use client';
 
+import { apiFetchWithToken } from '@/common/utils/ApiClient';
 import Image from 'next/image';
 import C_Button from '@/common/atom/C_Button';
 import C_Input from '@/common/atom/C_Input';
@@ -17,9 +18,28 @@ import { useState } from 'react';
  * comments[].date - 댓글 작성 날짜 (예: "2025.05.29 14:22")
  *
  */
-export default function C_CommentItem({ myProfile, comments = [] }) {
+export default function C_CommentItem({ myProfile, comments = [], postId, onCommentSuccess }) {
   const [comment, setComment] = useState('');
+  const handleSubmitComment = async () => {
+    if (!comment.trim()) return;
 
+    try {
+      await apiFetchWithToken('http://localhost:8080/api/v1/comment/write', {
+        method: 'POST',
+        body: JSON.stringify({
+          postId,
+          content: comment,
+        }),
+      });
+
+      alert('댓글 작성 완료');
+      setComment('');
+      onCommentSuccess?.(); // 부모 컴포넌트에서 댓글 새로고침하도록 콜백 호출
+    } catch (err) {
+      console.error(err);
+      alert(err.message || '댓글 작성 중 오류 발생');
+    }
+  };
   return (
     <div className={styles.commentWrapper}>
       {/* 댓글 수 */}
@@ -40,7 +60,7 @@ export default function C_CommentItem({ myProfile, comments = [] }) {
           onChange={e => setComment(e.target.value)}
           placeholder="댓글을 입력하세요."
         />
-        <C_Button size="small" title="작성" type="B" />
+        <C_Button size="small" title="작성" type="B" onClick={handleSubmitComment} />
       </div>
 
       {/* 댓글 리스트 */}

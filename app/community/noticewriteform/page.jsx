@@ -3,7 +3,7 @@
 import C_PageTemplate from '@/common/templates/C_PageTemplate';
 import C_WriteForm from '@/common/organism/C_WriteForm';
 
-export default function NoticePage() {
+export default function CommunityWriteForm() {
   const handleTabClick = label => {
     console.log('탭 클릭됨:', label);
   };
