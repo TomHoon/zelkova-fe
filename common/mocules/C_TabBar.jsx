@@ -19,7 +19,7 @@ export default function TabBar({ elementList = [], callback }) {
     setActiveIdx(idx);
 
     if (typeof callback == 'function') {
-      callback();
+      callback(elementList[idx]);
     }
   };
 

@@ -10,7 +10,7 @@ import C_Input from '@/common/atom/C_Input';
 import C_Button from '@/common/atom/C_Button';
 import C_Pagination from '@/common/mocules/C_Pagination';
 
-export default function ActivityPage({ title = '커뮤니티' }) {
+export default function CommunityList({ title = '커뮤니티' }) {
   const [data, setData] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [selected, setSelected] = useState('제목');
