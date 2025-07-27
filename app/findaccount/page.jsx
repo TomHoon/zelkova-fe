@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { React, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import C_SocialButton from '@/common/atom/C_SocialButton';
 import C_PhoneVerification from '@/common/mocules/C_PhoneVerification';
