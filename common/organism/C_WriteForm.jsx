@@ -1,25 +1,27 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+// Toast UI Editor = 위즈윅 에디터
+import dynamic from 'next/dynamic';
+import { useRef, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+
+const ToastEditor = dynamic(
+  async () => {
+    const mod = await import('@toast-ui/react-editor');
+    await import('@toast-ui/editor/dist/toastui-editor.css');
+    return mod.Editor;
+  },
+  { ssr: false }
+);
+
 import C_Button from '@/common/atom/C_Button';
 import C_WriteFromStyles from '@/styles/C_WriteFromStyles.module.scss';
 import { apiFetchWithToken } from '@/common/utils/ApiClient';
 
 export default function C_WriteForm({ boardId, title = '글작성', mode = 'create', postId = null }) {
-  function getBoardPath(boardId) {
-    switch (boardId) {
-      case 1:
-        return 'notice';
-      case 2:
-        return 'jopopening';
-      case 3:
-        return 'familynotice';
-      default:
-        return 'notice';
-    }
-  }
   const router = useRouter();
+
+  const editorRef = useRef(null);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -30,7 +32,23 @@ export default function C_WriteForm({ boardId, title = '글작성', mode = 'crea
   const [nickname, setNickname] = useState('');
   const nowDate = new Date().toISOString().slice(0, 10);
 
-  // 작성자 닉네임 불러오기
+  const getBoardPath = boardId => {
+    switch (boardId) {
+      case 1:
+        return 'notice';
+      case 2:
+        return 'jopopening';
+      case 3:
+        return 'familynotice';
+      case 4:
+        return 'support';
+      case 5:
+        return 'volunteer';
+      default:
+        return 'notice';
+    }
+  };
+
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
@@ -44,16 +62,12 @@ export default function C_WriteForm({ boardId, title = '글작성', mode = 'crea
     fetchUserInfo();
   }, []);
 
-  // 수정 모드일 때 기존 글 데이터 불러오기
   useEffect(() => {
     if (mode === 'edit' && postId) {
       const fetchPost = async () => {
         try {
           const res = await apiFetchWithToken(`http://localhost:8080/api/v1/post/detail/${postId}`);
-          console.log('받은 응답 전체:', res);
-
           const post = res?.data ?? res;
-
           setFormData({
             title: post.title ?? '',
             content: post.content ?? '',
@@ -68,15 +82,16 @@ export default function C_WriteForm({ boardId, title = '글작성', mode = 'crea
     }
   }, [mode, postId]);
 
-  // 폼 변경 핸들러
   const handleChange = e => {
     const { id, value } = e.target;
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
-  // 등록 or 수정 요청
   const handleSubmit = async () => {
-    if (!formData.title.trim() || !formData.content.trim()) {
+    const editorInstance = editorRef.current?.getInstance();
+    const htmlContent = editorInstance?.getHTML() || '';
+
+    if (!formData.title.trim() || !htmlContent.trim()) {
       alert('제목과 내용을 모두 입력해주세요.');
       return;
     }
@@ -85,13 +100,13 @@ export default function C_WriteForm({ boardId, title = '글작성', mode = 'crea
       postId,
       boardId,
       title: formData.title,
-      content: formData.content,
+      content: htmlContent,
       status: formData.status,
     };
 
     const url =
       mode === 'edit'
-        ? `http://localhost:8080/api/v1/post/edit`
+        ? 'http://localhost:8080/api/v1/post/edit'
         : 'http://localhost:8080/api/v1/post/write';
 
     const method = mode === 'edit' ? 'PUT' : 'POST';
@@ -103,8 +118,7 @@ export default function C_WriteForm({ boardId, title = '글작성', mode = 'crea
         body: JSON.stringify(payload),
       });
       alert(mode === 'edit' ? '글이 수정되었습니다.' : '글이 등록되었습니다.');
-      const path = `/${getBoardPath(boardId)}/boardlist`;
-      router.push(path);
+      router.push(`/${getBoardPath(boardId)}/boardlist`);
     } catch (err) {
       console.error(`${mode === 'edit' ? '수정' : '등록'} 실패:`, err);
       alert(err.message || '처리 중 오류 발생');
@@ -176,11 +190,27 @@ export default function C_WriteForm({ boardId, title = '글작성', mode = 'crea
 
       <div className={C_WriteFromStyles.row}>
         <label htmlFor="content">내용 작성</label>
-        <textarea
-          id="content"
-          value={formData.content}
-          onChange={handleChange}
-          className={C_WriteFromStyles.textarea}
+        <ToastEditor
+          key="toast-editor"
+          ref={editorRef}
+          initialValue={formData.content}
+          previewStyle="vertical"
+          height="400px"
+          initialEditType="wysiwyg"
+          useCommandShortcut={true}
+          hideModeSwitch={true} // ✅ 탭 숨김
+          hooks={{
+            addImageBlobHook: async (blob, callback) => {
+              const formData = new FormData();
+              formData.append('file', blob);
+              const response = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData,
+              });
+              const { url } = await response.json();
+              callback(url, 'image');
+            },
+          }}
         />
       </div>
 

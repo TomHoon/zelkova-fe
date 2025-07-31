@@ -1,5 +1,6 @@
 'use client';
 
+import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import styles from '@/styles/C_PostDetailView.module.scss';
@@ -59,7 +60,10 @@ export default function C_PostDetailView({
             </div>
           )}
 
-          <p className={styles.contentArea}>{content}</p>
+          <div
+            className={`${styles.contentArea} toastui-editor-contents`}
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </div>
       </div>
 
