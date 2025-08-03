@@ -1,8 +1,10 @@
 'use client';
+
+import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import s from '@/styles/C_PhoneVerification.module.scss';
 
-export default function C_PhoneVerification({ onVerified }) {
+export default function C_PhoneVerification({ onVerified, onPhoneChange }) {
   const [data, setData] = useState({
     name: '',
     birthdate: '',
@@ -67,7 +69,7 @@ export default function C_PhoneVerification({ onVerified }) {
 
       // 부모 컴포넌트에 인증 완료 알림
       if (onVerified) {
-        onVerified(true);
+        onVerified(data.phone);
       }
 
       // 타이머 중지
@@ -94,6 +96,15 @@ export default function C_PhoneVerification({ onVerified }) {
     },
     []
   );
+
+  // 전화번호 입력 변경 시 부모에 알림
+  const handlePhoneChange = e => {
+    const newPhone = e.target.value;
+    setData({ ...data, phone: newPhone });
+    if (onPhoneChange) {
+      onPhoneChange(newPhone);
+    }
+  };
 
   return (
     <div className={s.container}>
@@ -151,7 +162,7 @@ export default function C_PhoneVerification({ onVerified }) {
             className={s.input}
             placeholder="전화번호 입력"
             value={data.phone}
-            onChange={e => setData({ ...data, phone: e.target.value })}
+            onChange={handlePhoneChange}
             disabled={ui.sent}
           />
         </div>
@@ -201,3 +212,10 @@ export default function C_PhoneVerification({ onVerified }) {
     </div>
   );
 }
+
+import PropTypes from 'prop-types';
+
+C_PhoneVerification.propTypes = {
+  onVerified: PropTypes.func.isRequired,
+  onPhoneChange: PropTypes.func,
+};

@@ -1,7 +1,9 @@
 'use client';
 
+import React from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { signUp } from '../../common/utils/api';
 import C_SocialButton from '@/common/atom/C_SocialButton';
 import C_PhoneVerification from '@/common/mocules/C_PhoneVerification';
 import C_NavBar from '@/common/mocules/C_NavBar';
@@ -20,6 +22,7 @@ export default function Signup() {
   const [email, setEmail] = useState('');
   const [memo, setMemo] = useState('');
   const [phoneVerified, setPhoneVerified] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   // 에러 상태 관리
   const [passwordConfirmError, setPasswordConfirmError] = useState(false);
@@ -28,6 +31,7 @@ export default function Signup() {
   const [idSuccess, setIdSuccess] = useState('');
 
   // 모달 상태 추가
+  const [submitError, setSubmitError] = useState('');
   const [showSignupSuccessModal, setShowSignupSuccessModal] = useState(false);
 
   // 네비게이션 콜백
@@ -67,7 +71,7 @@ export default function Signup() {
   };
 
   // 회원가입 폼 제출 처리
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     // 유효성 검사
@@ -86,11 +90,21 @@ export default function Signup() {
       return;
     }
 
-    // 회원가입 요청 처리
-    console.log('회원가입 요청', { userId, password, name, birthdate, email, memo });
+    try {
+      const payload = {
+        username: userId,
+        password,
+        nickname: name,
+        phoneNumber, // 실제 휴대폰 번호 전달
+        email,
+      };
 
-    // 회원가입 성공 모달 표시
-    setShowSignupSuccessModal(true);
+      await signUp(payload);
+      setShowSignupSuccessModal(true);
+      setSubmitError('');
+    } catch (err) {
+      setSubmitError(err.message || '회원가입 중 오류가 발생했습니다.');
+    }
   };
 
   // 회원가입 성공 모달 확인 버튼 처리
@@ -201,7 +215,13 @@ export default function Signup() {
               />
             </div>
             <div className={styles.phoneVerificationWrapper}>
-              <C_PhoneVerification onVerified={() => setPhoneVerified(true)} />
+              <C_PhoneVerification
+                onVerified={phone => {
+                  setPhoneVerified(true);
+                  setPhoneNumber(phone);
+                }}
+                onPhoneChange={phone => setPhoneNumber(phone)}
+              />
             </div>
           </div>
 
@@ -235,7 +255,6 @@ export default function Signup() {
                 />
               </div>
             </div>
-
             <div className={styles.inputContainer}>
               {/* 소개글 입력 - 여러 줄 텍스트 입력 가능 */}
               <textarea
@@ -249,6 +268,9 @@ export default function Signup() {
           </div>
 
           {/* 5. 확인 버튼 그룹 */}
+          {submitError && <div className={styles.errorText}>{submitError}</div>}
+
+          {/* 제출 버튼 */}
           <div className={styles.formGroup}>
             <div className={styles.submitBtnWrapper}>
               <button type="submit" className={styles.submitButton}>

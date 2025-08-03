@@ -1,6 +1,8 @@
 'use client';
 
+import React from 'react';
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Image from 'next/image';
 import styles from '@/styles/C_ActivityPage.module.scss';
 import pagestyles from '@/styles/C_Paginationwrap.module.scss';
@@ -9,6 +11,7 @@ import C_PageTemplate from '@/common/templates/C_PageTemplate';
 import C_Input from '@/common/atom/C_Input';
 import C_Button from '@/common/atom/C_Button';
 import C_Pagination from '@/common/mocules/C_Pagination';
+import api from '@/libs/api';
 
 export default function CommunityList({ title = '커뮤니티' }) {
   const [data, setData] = useState([]);
@@ -17,15 +20,16 @@ export default function CommunityList({ title = '커뮤니티' }) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // 퍼블리싱용 더미 데이터
-    const dummy = Array.from({ length: 12 }, (_, i) => ({
-      id: i,
-      title: '타이틀',
-      description: '짧막한 내용이 들어갈 예정입니다...',
-      date: '2024.12.13',
-      img: `/images/sample${(i % 6) + 1}.png`,
-    }));
-    setData(dummy);
+    const fetchPosts = async () => {
+      try {
+        const res = await api.get('/api/post'); // 백엔드 API 경로 확인
+        setData(res.data);
+      } catch (err) {
+        console.error('게시글 불러오기 실패:', err.response?.data || err.message);
+      }
+    };
+
+    fetchPosts();
   }, []);
 
   const handleSearch = () => {
@@ -42,7 +46,7 @@ export default function CommunityList({ title = '커뮤니티' }) {
   };
 
   const filteredData = data.filter(item =>
-    selected === '제목' ? item.title.includes(keyword) : item.description.includes(keyword)
+    selected === '제목' ? item.title.includes(keyword) : item.author?.includes(keyword)
   );
 
   return (
@@ -90,12 +94,17 @@ export default function CommunityList({ title = '커뮤니티' }) {
             {filteredData.map(item => (
               <div className={styles.card} key={item.id}>
                 <div className={styles.imgBox}>
-                  <Image src={item.img} alt={item.title} fill style={{ objectFit: 'cover' }} />
+                  <Image
+                    src={item.img || '/images/sample1.png'}
+                    alt={item.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
                 <div className={styles.content}>
                   <strong>{item.title}</strong>
                   <p>{item.description}</p>
-                  <span>{item.date}</span>
+                  <span>{item.date || '날짜 없음'}</span>
                 </div>
               </div>
             ))}
@@ -115,3 +124,7 @@ export default function CommunityList({ title = '커뮤니티' }) {
     </C_PageTemplate>
   );
 }
+
+ActivityPage.propTypes = {
+  title: PropTypes.string,
+};
