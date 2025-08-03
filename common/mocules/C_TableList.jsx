@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import C_TableList from '@/styles/C_TableList.module.scss';
 import C_Button from '@/common/atom/C_Button';
@@ -27,6 +28,7 @@ export default function TableList({ title, columns, data, searchable = false, on
   const [keyword, setKeyword] = useState('');
   const [selected, setSelected] = useState('제목');
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   const handleSearch = () => {
     if (onSearch) onSearch(keyword);
@@ -85,9 +87,13 @@ export default function TableList({ title, columns, data, searchable = false, on
         </thead>
         <tbody>
           {data.map((row, i) => (
-            <tr key={i}>
+            <tr
+              key={i}
+              onClick={() => router.push(`./boarddetail/${row.postId}`)}
+              style={{ cursor: 'pointer' }}
+            >
               {columns.map(col => (
-                <td key={col.key}>{row[col.key]}</td>
+                <td key={col.key}>{col.key === 'postId' ? i + 1 : row[col.key]}</td>
               ))}
             </tr>
           ))}
