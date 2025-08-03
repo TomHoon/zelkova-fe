@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import C_PageTemplate from '@/common/templates/C_PageTemplate';
 import C_TableList from '@/common/mocules/C_TableList';
 import C_CommentItem from '@/common/organisms/C_CommentItem';

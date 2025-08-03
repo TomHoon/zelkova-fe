@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { initKakao, kakaoLogin } from '@/common/utils/kakao';
+import { login, loginWithKakao } from '../../common/utils/api';
 import C_SocialButton from '@/common/atom/C_SocialButton';
 import C_NavBar from '@/common/mocules/C_NavBar';
-import C_Modal from '@/common/mocules/C_Modal'; // 모달 컴포넌트 임포트
+import C_Modal from '@/common/mocules/C_Modal';
 import styles from '@/styles/Login.module.scss';
 
 export default function Login() {
@@ -21,6 +23,10 @@ export default function Login() {
   // 모달 상태 추가
   const [showLoginSuccessModal, setShowLoginSuccessModal] = useState(false);
 
+  useEffect(() => {
+    initKakao();
+  }, []);
+
   // 네비게이션 콜백
   const handleNavClick = item => {
     console.log('Nav item clicked:', item);
@@ -31,26 +37,20 @@ export default function Login() {
     setLoginStep(2); // 로그인 폼으로 전환
   };
 
-  // 로그인 제출 처리 (2단계)
-  const handleLoginSubmit = e => {
+  // 로그인 제출 처리 (2단계) : 로그인 API 호출 + 에러처리 + 성공 시 모달 띄우기
+  const handleLoginSubmit = async e => {
     e.preventDefault();
+    if (!userId.trim()) return setError('아이디를 입력해주세요.');
+    if (!password.trim()) return setError('비밀번호를 입력해주세요.');
 
-    if (!userId.trim()) {
-      setError('아이디를 입력해주세요.');
-      return;
+    try {
+      const data = await login({ username: userId, password });
+      localStorage.setItem('accessToken', data.accessToken);
+      setError('');
+      setShowLoginSuccessModal(true);
+    } catch (err) {
+      setError(err.message || '로그인 실패했습니다.');
     }
-
-    if (!password.trim()) {
-      setError('비밀번호를 입력해주세요.');
-      return;
-    }
-
-    // 로그인 처리 (실제로는 API 호출)
-    console.log('로그인 요청', { userId, password });
-
-    // 로그인 성공 시 모달 표시
-    setShowLoginSuccessModal(true);
-    setError('');
   };
 
   // 로그인 성공 모달 확인 버튼 처리
@@ -58,6 +58,29 @@ export default function Login() {
     setShowLoginSuccessModal(false);
     // 메인 페이지로 이동
     router.push('/');
+  };
+
+  const handleKakaoLogin = async () => {
+    try {
+      const kakaoUser = await kakaoLogin(); // 카카오 SDK 호출
+      console.log('[카카오 로그인 성공]', kakaoUser);
+
+      const res = await loginWithKakao({
+        email: kakaoUser.email,
+        nickname: kakaoUser.nickname,
+        kakaoId: kakaoUser.id,
+      });
+
+      if (res.accessToken) {
+        localStorage.setItem('accessToken', res.accessToken);
+        setShowLoginSuccessModal(true);
+      } else {
+        throw new Error('서버에서 accessToken을 받지 못했습니다.');
+      }
+    } catch (err) {
+      console.error('카카오 로그인 실패', err);
+      alert('카카오 로그인 실패: ' + (err.message || '알 수 없는 오류'));
+    }
   };
 
   return (
@@ -68,14 +91,8 @@ export default function Login() {
           <div className={styles.navContainer}>
             <C_NavBar
               elementList={[
-                {
-                  label: '기관소개',
-                  submenu: ['이용안내', '시설안내', '오시는길', '조직도'],
-                },
-                {
-                  label: '공지사항',
-                  submenu: ['공지사항', '가정통신문', '채용안내'],
-                },
+                { label: '기관소개', submenu: ['이용안내', '시설안내', '오시는길', '조직도'] },
+                { label: '공지사항', submenu: ['공지사항', '가정통신문', '채용안내'] },
                 { label: '후원&자원봉사', submenu: ['후원의손길', '자원봉사'] },
                 { label: '커뮤니티' },
               ]}
@@ -109,10 +126,7 @@ export default function Login() {
 
               {/* 소셜 로그인 섹션 */}
               <div className={styles.socialSection}>
-                <C_SocialButton
-                  onClickKakao={() => console.log('카카오 로그인')}
-                  onClickGoogle={() => console.log('구글 로그인')}
-                />
+                <C_SocialButton onClickKakao={handleKakaoLogin} onClickGoogle={() => {}} />
               </div>
             </>
           )}
@@ -156,22 +170,13 @@ export default function Login() {
                     className={`${styles.input} ${error ? styles.error : ''}`}
                   />
                 </div>
-
-                {/* 에러 메시지 */}
                 {error && <div className={styles.errorText}>{error}</div>}
-
-                {/* 로그인 버튼 */}
                 <button type="submit" className={styles.loginButton}>
                   로그인
                 </button>
               </form>
-
-              {/* 소셜 로그인 섹션 */}
               <div className={styles.socialSection}>
-                <C_SocialButton
-                  onClickKakao={() => console.log('카카오 로그인')}
-                  onClickGoogle={() => console.log('구글 로그인')}
-                />
+                <C_SocialButton onClickKakao={handleKakaoLogin} onClickGoogle={() => {}} />
               </div>
             </>
           )}
@@ -182,11 +187,8 @@ export default function Login() {
       {showLoginSuccessModal && (
         <C_Modal
           type="A"
-          title="문의하기"
-          content="느티나무 복지관에 문의 부탁드립니다.
-          
-          
-031-0000-0000"
+          title="로그인 성공"
+          content="로그인에 성공했습니다."
           confirmText="확인"
           onConfirm={handleLoginSuccessConfirm}
           onCancel={() => setShowLoginSuccessModal(false)}
