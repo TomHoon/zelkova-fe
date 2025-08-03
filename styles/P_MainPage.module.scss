@@ -516,6 +516,12 @@
   gap: 32px;
 }
 
+.mapBox {
+  width: 597px;
+  height: 517px;
+  flex-shrink: 0;
+}
+
 .mapHeader {
   width: 1080px;
   display: flex;
