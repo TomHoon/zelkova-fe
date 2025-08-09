@@ -1,7 +1,11 @@
 /**************************** 슬라이드 카드 영역 *****************************/
+.container {
+  width: 100%;
+}
+
 .sliderWrapper {
   position: relative;
-  width: 1280px;
+  width: 100%;
   height: 720px;
   overflow: hidden;
 }
@@ -126,7 +130,6 @@
 
 /**************************** 안내 페이지 리다이렉트 영역 *****************************/
 .ServiceInfoPanelWrapper {
-  width: 1280px;
   height: 544px;
   background-color: var(--main-bg);
   display: flex;
@@ -253,7 +256,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1280px;
   height: 544px;
 }
 
@@ -284,7 +286,6 @@
 /**************************** 공지사항 영역 *****************************/
 
 .noticeSection {
-  width: 1280px;
   height: 760px;
   background-color: var(--main-bg);
   padding: 40px 0;
@@ -385,7 +386,6 @@
 /**************************** 시설 안내 영역 *****************************/
 
 .facilitySection {
-  width: 1280px;
   height: 610px;
   background-color: var(--white);
   display: flex;
@@ -506,7 +506,6 @@
 
 /**************************** 구글맵 영역 *****************************/
 .mapSection {
-  width: 1280px;
   height: 760px;
   background-color: var(--main-bg);
   display: flex;
