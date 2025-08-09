@@ -2,19 +2,36 @@
 
 import NavBarStyles from '@/styles/C_NavBar.module.scss';
 import C_Button from '../atom/C_Button';
+import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 export default function Navbar({ elementList = [], callback }) {
+  const router = useRouter();
   const handleClick = (idx, label) => {
     if (typeof callback === 'function') {
       callback(idx, label);
     }
+
+    const url = [
+      '/notice/boardList',
+      '/familynotice/boardList',
+      '/volunteer/boardList',
+      '/community/boardList'
+    ][idx ?? 0];
+
+    router.push(url);
   };
+
+
+
 
   return (
     <div className={NavBarStyles.wrapper}>
       <nav className={NavBarStyles.navbar}>
         <div className={NavBarStyles.logo}>
-          <img src="/images/tree.png" alt="로고" />
+          <Link href="/wonjun/mainPage">
+            <img src="/images/tree.png" alt="로고" />
+          </Link>
         </div>
 
         <ul className={NavBarStyles.menu}>
@@ -26,7 +43,7 @@ export default function Navbar({ elementList = [], callback }) {
         </ul>
 
         <div className={NavBarStyles.login}>
-          <C_Button title="로그인" size="nav" type="A" />
+          <C_Button title="로그인" size="nav" type="A" onClick={() => router.push('/login')} />
           <C_Button title="회원가입" size="nav" type="B" />
         </div>
       </nav>
