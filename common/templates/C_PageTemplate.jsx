@@ -12,14 +12,14 @@ export default function C_PageTemplate({
   title,
   bannerImageUrl,
   tabBarElementList = [],
-  tabBarCallback = () => {},
+  tabBarCallback = () => { },
 }) {
   const navCallback = () => {
     console.log('NavBar callback 실행');
   };
 
   return (
-    <div className={styles.pageTemplate}>
+    <>
       <C_NavBar
         elementList={[
           { label: '기관소개', submenu: ['이용안내', '시설안내', '오시는길', '조직도'] },
@@ -53,9 +53,13 @@ export default function C_PageTemplate({
         </div>
       )}
 
-      <main className={styles.pageContent}>{children}</main>
+
+      <div className={styles.pageTemplate}>
+        <main className={styles.pageContent}>{children}</main>
+      </div>
+
 
       <C_Footer />
-    </div>
+    </>
   );
 }
