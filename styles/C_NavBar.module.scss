@@ -1,7 +1,7 @@
 .wrapper {
-  width: 1280px;
   background: #fff;
   position: relative;
+  border-bottom: 1px solid #e0e0e0;
 
   &:hover .dropdown {
     display: flex;
@@ -9,14 +9,13 @@
 }
 
 .navbar {
-  width: 1280px;
+  width: 90%;
   height: 64px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 20px;
-  border-bottom: 1px solid #e0e0e0;
 }
 
 .logo img {
@@ -62,6 +61,12 @@
 .login {
   display: flex;
   gap: 12px;
+}
+
+.logo,
+.menu,
+.dropdownColumn {
+  cursor: pointer;
 }
 
 .dropdown {
