@@ -21,45 +21,59 @@
 .background {
   color: var(--background);
 }
+
 .foreground {
   color: var(--foreground);
 }
+
 .main {
   color: var(--main);
 }
+
 .hover {
   color: var(--hover);
 }
+
 .active {
   color: var(--active);
 }
+
 .warning {
   color: var(--warning);
 }
+
 .heart {
   color: var(--heart);
 }
+
 .title1 {
   color: var(--title1);
 }
+
 .title2 {
   color: var(--title2);
 }
+
 .text {
   color: var(--text);
 }
+
 .subtext {
   color: var(--subtext);
 }
+
 .line {
   color: var(--line);
 }
+
 .footer {
   color: var(--footer);
 }
+
 .section-title-bg {
   color: var(--section-title-bg);
 }
+
 .main-bg {
   color: var(--main-bg);
 }
@@ -93,4 +107,9 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+
+button {
+  cursor: pointer;
 }
