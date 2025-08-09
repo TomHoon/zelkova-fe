@@ -1,5 +1,4 @@
 .footer {
-  width: 1280px;
   height: 258px;
   background-color: var(--active);
   color: var(--white);
@@ -7,6 +6,10 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  .container {
+    width: 1280px;
+    margin: 0 auto;
+  }
 
   .logoRow {
     display: flex;
