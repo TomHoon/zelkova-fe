@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Axios 인스턴스 생성
 const apiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080',
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:22000',
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
 });
