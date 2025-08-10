@@ -6,7 +6,7 @@ import C_Button from '@/common/atom/C_Button';
 
 /**
  *
- * [공통모달 - Args]
+ * [공통모달 - Args]w
  *
  * - 타입: A, B, C (기본값: A)
  *   * - A: 녹색 테두리 확인 버튼만 있는 모달

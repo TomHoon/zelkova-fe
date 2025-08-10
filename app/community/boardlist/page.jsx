@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import Image from 'next/image';
 import styles from '@/styles/C_ActivityPage.module.scss';
 import pagestyles from '@/styles/C_Paginationwrap.module.scss';
@@ -11,7 +10,7 @@ import C_PageTemplate from '@/common/templates/C_PageTemplate';
 import C_Input from '@/common/atom/C_Input';
 import C_Button from '@/common/atom/C_Button';
 import C_Pagination from '@/common/mocules/C_Pagination';
-import api from '@/libs/api';
+import { apiFetch } from '@/common/utils/api';
 
 export default function CommunityList({ title = '커뮤니티' }) {
   const [data, setData] = useState([]);
@@ -22,7 +21,7 @@ export default function CommunityList({ title = '커뮤니티' }) {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await api.get('/api/post'); // 백엔드 API 경로 확인
+        const res = await apiFetch.get('/api/post'); // 백엔드 API 경로 확인
         setData(res.data);
       } catch (err) {
         console.error('게시글 불러오기 실패:', err.response?.data || err.message);
@@ -124,7 +123,3 @@ export default function CommunityList({ title = '커뮤니티' }) {
     </C_PageTemplate>
   );
 }
-
-ActivityPage.propTypes = {
-  title: PropTypes.string,
-};

@@ -85,8 +85,17 @@ export default function Login() {
 
   return (
     <div className={styles.pageContainer}>
+      <C_NavBar
+        elementList={[
+          { label: '기관소개', submenu: ['이용안내', '시설안내', '오시는길', '조직도'] },
+          { label: '공지사항', submenu: ['공지사항', '가정통신문', '채용안내'] },
+          { label: '후원&자원봉사', submenu: ['후원의손길', '자원봉사'] },
+          { label: '커뮤니티' },
+        ]}
+        callback={handleNavClick}
+      />
       {/* 헤더 영역 */}
-      <header className={styles.header}>
+      {/* <header className={styles.header}>
         <div className={styles.headerContent}>
           <div className={styles.navContainer}>
             <C_NavBar
@@ -100,7 +109,7 @@ export default function Login() {
             />
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* 로그인 본문 영역 */}
       <main className={styles.loginContainer}>
@@ -126,7 +135,7 @@ export default function Login() {
 
               {/* 소셜 로그인 섹션 */}
               <div className={styles.socialSection}>
-                <C_SocialButton onClickKakao={handleKakaoLogin} onClickGoogle={() => {}} />
+                <C_SocialButton onClickKakao={handleKakaoLogin} onClickGoogle={() => { }} />
               </div>
             </>
           )}
@@ -176,7 +185,7 @@ export default function Login() {
                 </button>
               </form>
               <div className={styles.socialSection}>
-                <C_SocialButton onClickKakao={handleKakaoLogin} onClickGoogle={() => {}} />
+                <C_SocialButton onClickKakao={handleKakaoLogin} onClickGoogle={() => { }} />
               </div>
             </>
           )}

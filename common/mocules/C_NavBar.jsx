@@ -3,10 +3,13 @@
 import NavBarStyles from '@/styles/C_NavBar.module.scss';
 import C_Button from '../atom/C_Button';
 import Link from 'next/link';
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function Navbar({ elementList = [], callback }) {
+  const [ishovering, setIsHovering] = useState(false);
   const router = useRouter();
+
   const handleClick = (idx, label) => {
     if (typeof callback === 'function') {
       callback(idx, label);
@@ -16,20 +19,28 @@ export default function Navbar({ elementList = [], callback }) {
       '/notice/boardList',
       '/familynotice/boardList',
       '/volunteer/boardList',
-      '/community/boardList'
+      '/community/boardList',
     ][idx ?? 0];
 
     router.push(url);
   };
 
-
-
+  const handleHovering = () => {
+    setIsHovering(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
 
   return (
-    <div className={NavBarStyles.wrapper}>
-      <nav className={NavBarStyles.navbar}>
+    <div
+      className={NavBarStyles.wrapper}
+      onMouseEnter={handleHovering}
+      onMouseLeave={handleMouseLeave}
+    >
+      <nav className={`${NavBarStyles.navbar} ${ishovering ? NavBarStyles.active : ''}`}>
         <div className={NavBarStyles.logo}>
-          <Link href="/wonjun/mainPage">
+          <Link href="/">
             <img src="/images/tree.png" alt="로고" />
           </Link>
         </div>
@@ -38,6 +49,12 @@ export default function Navbar({ elementList = [], callback }) {
           {elementList.map((item, idx) => (
             <li key={idx} className={NavBarStyles.menuItem}>
               <span onClick={() => handleClick(idx, item.label)}>{item.label}</span>
+              {/* {item.submenu} */}
+              <ul
+                className={`${NavBarStyles.menuHideItem} ${ishovering ? NavBarStyles.active : ''}`}
+              >
+                {item.submenu && item.submenu.map((sub, idx) => <li key={idx}>{sub}</li>)}
+              </ul>
             </li>
           ))}
         </ul>
@@ -47,27 +64,6 @@ export default function Navbar({ elementList = [], callback }) {
           <C_Button title="회원가입" size="nav" type="B" />
         </div>
       </nav>
-
-      <div className={NavBarStyles.dropdown}>
-        {elementList
-          .filter(menu => menu.submenu && menu.submenu.length > 0)
-          .map((menu, idx) => (
-            <div key={idx} className={NavBarStyles.dropdownColumn}>
-              {menu.submenu.map((sub, subIdx) => (
-                <div
-                  key={subIdx}
-                  className={NavBarStyles.dropdownItem}
-                  onClick={() => handleClick(idx, sub)}
-                >
-                  {sub}
-                </div>
-              ))}
-            </div>
-          ))}
-        <div className={NavBarStyles.dropdownImage}>
-          <img src="/images/tree.png" alt="트리 이미지" />
-        </div>
-      </div>
     </div>
   );
 }
