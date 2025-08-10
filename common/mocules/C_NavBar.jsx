@@ -40,7 +40,7 @@ export default function Navbar({ elementList = [], callback }) {
     >
       <nav className={`${NavBarStyles.navbar} ${ishovering ? NavBarStyles.active : ''}`}>
         <div className={NavBarStyles.logo}>
-          <Link href="/wonjun/mainPage">
+          <Link href="/">
             <img src="/images/tree.png" alt="로고" />
           </Link>
         </div>
@@ -67,4 +67,3 @@ export default function Navbar({ elementList = [], callback }) {
     </div>
   );
 }
-
