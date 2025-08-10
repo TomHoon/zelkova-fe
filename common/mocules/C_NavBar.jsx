@@ -3,7 +3,7 @@
 import NavBarStyles from '@/styles/C_NavBar.module.scss';
 import C_Button from '../atom/C_Button';
 import Link from 'next/link';
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
 export default function Navbar({ elementList = [], callback }) {
   const router = useRouter();
@@ -16,20 +16,17 @@ export default function Navbar({ elementList = [], callback }) {
       '/notice/boardList',
       '/familynotice/boardList',
       '/volunteer/boardList',
-      '/community/boardList'
+      '/community/boardList',
     ][idx ?? 0];
 
     router.push(url);
   };
 
-
-
-
   return (
     <div className={NavBarStyles.wrapper}>
       <nav className={NavBarStyles.navbar}>
         <div className={NavBarStyles.logo}>
-          <Link href="/wonjun/mainPage">
+          <Link href="/">
             <img src="/images/tree.png" alt="로고" />
           </Link>
         </div>
